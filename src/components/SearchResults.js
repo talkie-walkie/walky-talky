@@ -1138,7 +1138,7 @@ const SearchResults = ({ time, genreId, searchTerm }) => {
       getSubsets(response.data.results, time);
     });
   }
-  }, [time, genreId]);
+  }, [time, genreId, searchTerm]);
 
     //come back to filld information with variables
 
