@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import useSubsets from '../helperFunctions/useSubsets';
 import getBestPodcast from '../helperFunctions/getBestPodcast';
-
+import Playlist from './Playlist'
 const data = {
   id: 93,
   name: 'Business',
@@ -1133,11 +1133,9 @@ const SearchResults = ({ time, genreId }) => {
 
   return (
     <section>
-      <h1>Search Results</h1>
+      <h3>Search Results</h3>
 
-      {selectedSubset.map((podcast) => {
-        return <h1 key={podcast.id}>{podcast.title}</h1>;
-      })}
+      <Playlist subset={selectedSubset} />
       {/* add button here that allows user to grab new subset (ie. shuffle) ONLY if subsets.length>0 */}
     </section>
   );
