@@ -3,7 +3,7 @@ import firebase from './firebase';
 import { ref, getDatabase, onValue } from 'firebase/database';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-
+import Search from './Search';
 import Header from './components/Header';
 import SearchResults from './components/SearchResults';
 
@@ -12,9 +12,9 @@ import SearchResults from './components/SearchResults';
 function App() {
   const [time, setTime] = useState(0);
   const [genreId, setGenreId] = useState(null);
-
   const database = getDatabase(firebase);
   const dbRef = ref(database);
+
 
   useEffect(() => {
     onValue(dbRef, (snapshot) => {
@@ -25,6 +25,7 @@ function App() {
       }
     });
   }, []);
+
 
   //leaving commented out until we need to use API call with real data
 
@@ -41,6 +42,7 @@ function App() {
   //     console.log(response);
   //   });
   // }, []);
+
 
   // useEffect(() => {
   //   axios({
@@ -60,8 +62,11 @@ function App() {
   return (
     <div className="container">
       <Header time={time} />
+      <Search/>
       <SearchResults time={time} genreId={genreId} />
+      
     </div>
+
   );
 }
 
