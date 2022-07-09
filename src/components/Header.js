@@ -1,5 +1,6 @@
 import { useWindowWidth } from '@react-hook/window-size';
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import './Header.css';
 
 const Header = (props) => {
@@ -16,10 +17,18 @@ const Header = (props) => {
         <h2 className="header-subheader">A Podcast Planner</h2>
       </div>
       {/* this is from font-awesome */}
-      <div className="playlist-button">
-        <i className="fa-solid fa-list"></i>
-        <p className={time === 0 ? 'visible' : null}>View Saved Playlists</p>
-      </div>
+      {props.home ? <Link to="SavedPlaylist">
+        <div className="playlist-button">
+          <i className="fa-solid fa-list"></i>
+          <p className={time === 0 ? 'visible' : null}>View Saved Playlists</p>
+        </div>
+      </Link> : <Link to="/">
+        <i class="fa-solid fa-house-chimney"></i>
+      </Link>}
+
+
+
+
     </header>
   );
 };

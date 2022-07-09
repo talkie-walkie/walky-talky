@@ -1,25 +1,32 @@
 import './App.css';
+
 import './styles/Search.css'
 import { useState } from 'react';
 import Search from './components/Search';
+
 import Header from './components/Header';
 import SearchResults from './components/SearchResults';
-
-// API-Key c17f9dde6c0743f195a962da663f6626
+import {Route, Routes} from 'react-router-dom';
 
 function App() {
-  const [time, setTime] = useState(0);
-  const [genreId, setGenreId] = useState(null);
-  const [searchTerm, setSearchTerm] = useState('');
-  
-  
 
+  const [time, setTime] = useState(0);
+  const [genreId, setGenreId] = useState(0);
+  const [searchTerm, setSearchTerm] = useState('')
+  const database = getDatabase(firebase);
 
   return (
     <div className="container">
-      <Header time={time} />
-      <Search time={time} setTime={setTime} setGenreId={setGenreId} setSearchTerm={setSearchTerm} />
-      <SearchResults time={time} genreId={genreId} />
+      <Routes>
+        <Route path="SavedPlaylist" element={<Header home={false}/>}/>
+        <Route path="/" element={
+          <>
+            <Header time={time} home={true}/>
+            <Search time={time} setTime={setTime} setGenreId={setGenreId} setSearchTerm={setSearchTerm} />
+            <SearchResults time={time} genreId={genreId} searchTerm={searchTerm} />
+          </>} />
+          <Route path="*" element={<p>ERROR</p>}/>
+      </Routes>   
     </div>
 
   );
