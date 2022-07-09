@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useEffect } from 'react';
+import axios from 'axios';
 import useSubsets from '../helperFunctions/useSubsets';
 import getBestPodcast from '../helperFunctions/getBestPodcast';
 
@@ -1099,7 +1100,7 @@ const data = {
   previous_page_number: 1,
 };
 
-const SearchResults = ({ time, genreId }) => {
+const SearchResults = ({ time, genreId, searchTerm }) => {
   //states
   const [podcasts, setPodcasts] = useState([]);
   const [selectedSubset, setSelectedSubset] = useState([]);
@@ -1118,12 +1119,28 @@ const SearchResults = ({ time, genreId }) => {
   };
 
   useEffect(() => {
-    //need to still fetch call to API for data
-    setPodcasts(data.podcasts);
+
+    if (genreId && searchTerm) {
+
+    axios({
+      url: 'https://listen-api.listennotes.com/api/v2/search',
+      headers: {
+        'X-ListenAPI-Key': 'c17f9dde6c0743f195a962da663f6626'
+      },
+      params: {
+        //CHANGE TO genreId TO GO LIVE
+        q: searchTerm,
+        genre_ids: genreId,
+      },
+    }).then((response) => {
+      console.log(response);
+      setPodcasts(response.data.results);
+      getSubsets(response.data.results, time);
+    });
+  }
+  }, [time, genreId, searchTerm]);
 
     //come back to filld information with variables
-    getSubsets(data.podcasts, time);
-  }, [time, genreId]);
 
   useEffect(() => {
     if (podcasts.length > 0) {
@@ -1136,7 +1153,7 @@ const SearchResults = ({ time, genreId }) => {
       <h1>Search Results</h1>
 
       {selectedSubset.map((podcast) => {
-        return <h1 key={podcast.id}>{podcast.title}</h1>;
+        return <h1 key={podcast.id}>{podcast.title_original}</h1>;
       })}
       {/* add button here that allows user to grab new subset (ie. shuffle) ONLY if subsets.length>0 */}
     </section>

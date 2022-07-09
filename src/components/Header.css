@@ -101,3 +101,13 @@ header.shrink .header-subheader {
   transform: translate(0);
   opacity: 1;
 }
+
+/* HOME BUTTON  */
+
+.fa-house-chimney {
+  font-size: 2rem;
+  position: absolute;
+  top: 20px;
+  right: 0px;
+  padding: 10px 20px;
+}
