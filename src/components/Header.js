@@ -1,5 +1,4 @@
 import { useWindowWidth } from '@react-hook/window-size';
-import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Header.css';
 
@@ -23,7 +22,7 @@ const Header = (props) => {
           <p className={time === 0 ? 'visible' : null}>View Saved Playlists</p>
         </div>
       </Link> : <Link to="/">
-        <i class="fa-solid fa-house-chimney"></i>
+        <i className="fa-solid fa-house-chimney"></i>
       </Link>}
 
 

@@ -3,6 +3,7 @@
   flex-direction: column;
   border: 1px solid black;
   margin-bottom: 5px;
+  cursor: pointer;
 }
 
 .podcast-img-and-details {
@@ -16,21 +17,22 @@
 
 .podcast-details {
   flex-basis: 66%;
+  align-self: center;
 }
 
 .podcast-details h4 {
   font-size: clamp(1rem, 5vw, 3rem);
+  font-weight: 400;
 }
 
 .podcast-details h5 {
   font-size: clamp(.9rem, 3vw, 2rem);
-}
-
-.see-description {
-  font-size: .9rem;
+  font-weight: 300;
 }
 
 .podcast-description {
+  font-size: .9rem;
+  font-weight: 400;
   flex-basis: 93%;
   margin: 0 auto;
   word-break: break-word;
