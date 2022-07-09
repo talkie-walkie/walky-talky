@@ -1,0 +1,78 @@
+.search-form {
+  text-align: center;
+}
+
+.search-form form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.number-inputs {
+  display: flex;
+  gap: 20px;
+}
+
+.number-input {
+  display: flex;
+  justify-content: center;
+}
+
+.number-input input {
+  width: 50px;
+  text-align: center;
+}
+
+.number-input label {
+  margin-left: 10px;
+}
+
+/* Remove number input up and down buttons on Chrome, Safari, Edge, Opera */
+.number-input input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  margin: 0;
+}
+
+/* Remove number input up and down buttons on Firefox */
+.number-input input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.search-input {
+  width: 300px;
+  margin-top: 20px;
+}
+
+.genre-inputs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: .5rem;
+  margin-top: 20px;
+}
+
+.genre-input {
+  flex: 1 0 auto;
+  display: flex;
+}
+
+.genre-input input:checked + .genre-label {
+  background-color: red;
+}
+
+.genre-label {
+  cursor: pointer;
+  background-color: burlywood;
+  padding: .3rem .7rem .5rem;
+  flex: 1 0 auto;
+  border-radius: 100vmax;
+}
+
+.genre-label:focus {
+  outline: 1px solid red;
+}
+
+.search-form button {
+  margin-top: 20px;
+  width: clamp(100px, 20vw, 200px);
+}
