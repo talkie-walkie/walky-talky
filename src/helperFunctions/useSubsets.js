@@ -1,9 +1,10 @@
+import { useCallback } from 'react';
 import { useState } from 'react';
 
 const useSubsets = (defaultArray) => {
   const [subsets, setSubsets] = useState(defaultArray);
 
-  function getSubsets(array, walkTime) {
+  const getSubsets = useCallback((array, walkTime) => {
     const [lowerLimit, upperLimit] = [walkTime * 0.99, walkTime * 1.01];
 
     function recursivelyFindSubsets(index = 0, sum = 0, subset = []) {
@@ -27,7 +28,7 @@ const useSubsets = (defaultArray) => {
     const result = [];
     recursivelyFindSubsets();
     setSubsets(result);
-  }
+  }, []);
 
   return [subsets, getSubsets];
 };
