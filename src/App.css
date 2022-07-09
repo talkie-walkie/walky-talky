@@ -209,16 +209,11 @@ template {
   overflow: hidden;
 }
 
-* {
-  /* outline: 1px solid red; */
-  /* overflow-x: hidden; */
-}
-
 html {
   font-size: 125%;
 }
 
-h1 {
+h1, h2, h3, h4, h5, p {
   margin: 0;
   padding: 0;
 }
@@ -232,4 +227,10 @@ h2 {
 .container {
   width: min(90%, 1000px);
   margin: 0 auto;
+}
+
+img {
+  width: 100%;
+  height: auto;
+  display: block;
 }

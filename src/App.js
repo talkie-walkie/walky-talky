@@ -1,34 +1,45 @@
-import './App.css';
+import "./App.css";
 
-import './styles/Search.css'
-import { useState } from 'react';
-import Search from './components/Search';
+import "./styles/Search.css";
+import "./styles/PodcastTile.css";
+import { useState } from "react";
+import Search from "./components/Search";
 
-import Header from './components/Header';
-import SearchResults from './components/SearchResults';
-import {Route, Routes} from 'react-router-dom';
+import Header from "./components/Header";
+import SearchResults from "./components/SearchResults";
+import { Route, Routes } from "react-router-dom";
 
 function App() {
-
   const [time, setTime] = useState(0);
   const [genreId, setGenreId] = useState(0);
-  const [searchTerm, setSearchTerm] = useState('')
-  const database = getDatabase(firebase);
+  const [searchTerm, setSearchTerm] = useState("");
 
   return (
     <div className="container">
       <Routes>
-        <Route path="SavedPlaylist" element={<Header home={false}/>}/>
-        <Route path="/" element={
-          <>
-            <Header time={time} home={true}/>
-            <Search time={time} setTime={setTime} setGenreId={setGenreId} setSearchTerm={setSearchTerm} />
-            <SearchResults time={time} genreId={genreId} searchTerm={searchTerm} />
-          </>} />
-          <Route path="*" element={<p>ERROR</p>}/>
-      </Routes>   
+        <Route path="SavedPlaylist" element={<Header home={false} />} />
+        <Route
+          path="/"
+          element={
+            <>
+              <Header time={time} home={true} />
+              <Search
+                time={time}
+                setTime={setTime}
+                setGenreId={setGenreId}
+                setSearchTerm={setSearchTerm}
+              />
+              <SearchResults
+                time={time}
+                genreId={genreId}
+                searchTerm={searchTerm}
+              />
+            </>
+          }
+        />
+        <Route path="*" element={<p>ERROR</p>} />
+      </Routes>
     </div>
-
   );
 }
 
