@@ -1,0 +1,103 @@
+header {
+  text-align: center;
+  min-height: 35vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  position: relative;
+  transition: min-height 1.5s ease-out;
+}
+
+header.shrink {
+  min-height: 15vh;
+}
+
+h2 {
+  /* display: none */
+}
+
+/* header title */
+
+.header-title h1 {
+  transform: rotate(-10deg);
+}
+
+header.shrink .header-title {
+  animation: transition-to-left 1.5s forwards ease-out;
+}
+
+.header-subheader {
+  font-size: 1rem;
+  font-weight: 300;
+}
+
+header.shrink .header-subheader {
+  display: none;
+}
+
+@keyframes transition-to-left {
+  0% {
+    position: absolute;
+    /* top: 50%; */
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  100% {
+    /* top: 20px; */
+    left: 20px;
+    position: absolute;
+  }
+}
+
+@keyframes remove-header-h2 {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    /* opacity: 0; */
+    display: none;
+  }
+}
+
+.talky {
+  display: block;
+}
+
+/* saved playlist menu */
+
+.playlist-button {
+  position: absolute;
+  top: 20px;
+  right: 0px;
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+  overflow-x: hidden;
+}
+
+.playlist-button i {
+  order: 1;
+  font-size: 2rem;
+  background-color: white;
+  padding: 0 20px;
+}
+
+.playlist-button i:hover + p,
+.playlist-button i:focus + p {
+  transform: translate(0);
+  opacity: 1;
+}
+
+.playlist-button p {
+  font-weight: 300;
+  transform: translate(125%);
+  opacity: 0;
+  transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+  z-index: -1;
+}
+
+.playlist-button p.visible {
+  transform: translate(0);
+  opacity: 1;
+}
