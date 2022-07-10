@@ -1,10 +1,10 @@
 import { useState } from "react";
 import SearchDetails from "./SearchDetails";
 
-const Search = ({ time, setTime, setGenreId, setSearchTerm }) => {
+const Search = ({ time, setTime, setGenreIds, setSearchTerm }) => {
   const [timeHours, setTimeHours] = useState(0);
   const [timeMinutes, setTimeMinutes] = useState(0);
-  const [genre, setGenre] = useState(0);
+  const [genres, setGenres] = useState([]);
   const [searchInput, setSearchInput] = useState("");
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -17,7 +17,7 @@ const Search = ({ time, setTime, setGenreId, setSearchTerm }) => {
       let hours = timeHours * 60 * 60;
       let minutes = timeMinutes * 60;
       setTime(hours + minutes);
-      setGenreId(genre);
+      setGenreIds(genres.join(','));
       setSearchTerm(searchInput);
     }
   };
@@ -50,7 +50,7 @@ const Search = ({ time, setTime, setGenreId, setSearchTerm }) => {
 					</div>
         </div>
         {time ? (
-          <SearchDetails setGenre={setGenre} setSearchInput={setSearchInput} />
+          <SearchDetails setGenres={setGenres} setSearchInput={setSearchInput} />
         ) : null}
         <button className="time-submit-button">Submit</button>
       </form>

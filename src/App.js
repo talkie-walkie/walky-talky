@@ -11,7 +11,7 @@ import { Route, Routes } from "react-router-dom";
 
 function App() {
   const [time, setTime] = useState(0);
-  const [genreId, setGenreId] = useState(0);
+  const [genreIds, setGenreIds] = useState("");
   const [searchTerm, setSearchTerm] = useState("");
 
   return (
@@ -26,12 +26,12 @@ function App() {
               <Search
                 time={time}
                 setTime={setTime}
-                setGenreId={setGenreId}
+                setGenreIds={setGenreIds}
                 setSearchTerm={setSearchTerm}
               />
               <SearchResults
                 time={time}
-                genreId={genreId}
+                genreIds={genreIds}
                 searchTerm={searchTerm}
               />
             </>

@@ -523,7 +523,7 @@ const data = [
   },
 ];
 
-const SearchResults = ({ time, genreId, searchTerm }) => {
+const SearchResults = ({ time, genreIds, searchTerm }) => {
   //states
   const [podcasts, setPodcasts] = useState([]);
   const [selectedSubset, setSelectedSubset] = useState([]);
@@ -542,14 +542,28 @@ const SearchResults = ({ time, genreId, searchTerm }) => {
     }
   }, [podcasts, subsets, time]);
 
-  const savePlaylist = (name, selectedSubset) => {
+  const calculateTime = (time) => {
+    const hours = Math.floor(time / 3600);
+    const minutes = Math.floor((time % 3600) / 60);
+    const seconds = (time % 3600) % 60;
+    console.log(hours, minutes, seconds, time);
+    return [hours, minutes, seconds];
+  };
+
+  const savePlaylist = (name) => {
     if (name && selectedSubset) {
       const database = getDatabase(firebase);
       const dbRef = ref(database);
 
+      const [hours, minutes, seconds] = calculateTime(time);
+
       push(dbRef, {
-        playlistName: name,
+        name: name,
+        genreIds: genreIds,
         podcasts: selectedSubset,
+        hours: hours,
+        minutes: minutes,
+        seconds: seconds,
       });
 
       setPlaylistName('');
@@ -557,7 +571,7 @@ const SearchResults = ({ time, genreId, searchTerm }) => {
   };
 
   useEffect(() => {
-    // if (genreId && searchTerm) {
+    // if (genreIds && searchTerm) {
     //   axios({
     //     url: 'https://listen-api.listennotes.com/api/v2/search',
     //     headers: {
@@ -565,7 +579,7 @@ const SearchResults = ({ time, genreId, searchTerm }) => {
     //     },
     //     params: {
     //       q: searchTerm,
-    //       genre_ids: genreId,
+    //       genre_ids: genreIds,
     //     },
     //   }).then((response) => {
     //     console.log(response.data.results);
@@ -575,7 +589,7 @@ const SearchResults = ({ time, genreId, searchTerm }) => {
     // }
     setPodcasts(data);
     getSubsets(data, time);
-  }, [time, genreId, searchTerm, getSubsets]);
+  }, [time, genreIds, searchTerm, getSubsets]);
 
   useEffect(() => {
     if (podcasts.length > 0) {

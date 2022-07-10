@@ -1,97 +1,32 @@
-const SearchDetails = ({ setGenre, setSearchInput }) => {
-  const genreArray = [
-    {
-      genre: "Personal Finance",
-      genreId: 144,
-    },
-    {
-      genre: "Sport",
-      genreId: 77,
-    },
-    {
-      genre: "Locally Focused",
-      genreId: 151,
-    },
-    {
-      genre: "Business",
-      genreId: 93,
-    },
-    {
-      genre: "Health & Fitness",
-      genreId: 88,
-    },
-    {
-      genre: "Music",
-      genreId: 134,
-    },
-    {
-      genre: "Technology",
-      genreId: 127,
-    },
-    {
-      genre: "Fiction",
-      genreId: 168,
-    },
-    {
-      genre: "Kids & Family",
-      genreId: 132,
-    },
-    {
-      genre: "News",
-      genreId: 99,
-    },
-    {
-      genre: "Comedy",
-      genreId: 133,
-    },
-    {
-      genre: "Society & Culture",
-      genreId: 122,
-    },
-    {
-      genre: "Religion & Spirituality",
-      genreId: 69,
-    },
-    {
-      genre: "Government",
-      genreId: 117,
-    },
-    {
-      genre: "TV & Film",
-      genreId: 68,
-    },
-    {
-      genre: "Leisure",
-      genreId: 82,
-    },
-    {
-      genre: "Education",
-      genreId: 111,
-    },
-    {
-      genre: "Arts",
-      genreId: 100,
-    },
-    {
-      genre: "Science",
-      genreId: 107,
-    },
-    {
-      genre: "True Crime",
-      genreId: 135,
-    },
-    {
-      genre: "History",
-      genreId: 125,
-    },
-  ];
+import { useState } from 'react';
+import genreArray from '../data/genreArray';
+
+const SearchDetails = ({ setGenres, setSearchInput }) => {
+  const [checkedState, setCheckedState] = useState(
+    new Array(genreArray.length).fill(false)
+  );
 
   const handleSearchInputChange = (event) => {
     setSearchInput(event.target.value);
   };
-  const handleGenreChange = (event) => {
-    setGenre(event.target.value);
+
+  const handleGenreChange = (position) => {
+    const genres = [];
+
+    const newCheckedStates = checkedState.map((checked, index) => {
+      return index === position ? !checked : checked;
+    });
+
+    newCheckedStates.forEach((checked, index) => {
+      if (checked) {
+        genres.push(genreArray[index].genreId);
+      }
+    });
+
+    setCheckedState(newCheckedStates);
+    setGenres(genres);
   };
+
   return (
     <>
       <label className="sr-only" htmlFor="searchInput">
@@ -107,18 +42,23 @@ const SearchDetails = ({ setGenre, setSearchInput }) => {
         required
       />
       <div className="genre-inputs">
-        {genreArray.map((item) => (
+        {genreArray.map((item, index) => (
           <div className="genre-input" key={item.genreId}>
             <input
               className="sr-only"
-              type="radio"
+              type="checkbox"
               name="genreBtn"
-              id={item.genre}
+              id={`checkbox-${index}`}
               value={item.genreId}
-              onChange={handleGenreChange}
+              onChange={() => handleGenreChange(index)}
+              checked={checkedState[index]}
               tabIndex="-1"
             ></input>
-            <label className="genre-label" htmlFor={item.genre} tabIndex="0">
+            <label
+              className="genre-label"
+              htmlFor={`checkbox-${index}`}
+              tabIndex="0"
+            >
               {item.genre}
             </label>
           </div>
