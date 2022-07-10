@@ -8,6 +8,7 @@ import Search from "./components/Search";
 import Header from "./components/Header";
 import SearchResults from "./components/SearchResults";
 import { Route, Routes } from "react-router-dom";
+import SavedPlaylists from "./components/SavedPlaylists";
 
 function App() {
   const [time, setTime] = useState(0);
@@ -17,7 +18,12 @@ function App() {
   return (
     <div className="container">
       <Routes>
-        <Route path="SavedPlaylist" element={<Header home={false} />} />
+        <Route path="SavedPlaylist" element={
+          <>
+            <Header home={false} />
+            <SavedPlaylists />
+          </>
+        } />
         <Route
           path="/"
           element={

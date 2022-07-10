@@ -1,23 +1,36 @@
-import firebase from './firebase';
-import { ref, getDatabase, onValue } from 'firebase/database';
-import { useEffect, /* useState */ } from 'react';
+import { useState } from "react"
+import Playlist from "./Playlist";
+const SavedPlaylist = ({ playlist, index, setActivePlaylist, displayedPlaylist, deletePlaylist }) => {
+    console.log(playlist.id);
 
-const SavedPlaylists = () => {
-  useEffect(() => {
-    const database = getDatabase(firebase);
-    const dbRef = ref(database);
-    onValue(dbRef, (snapshot) => {
-      if (snapshot.exists()) {
-        // const data = snapshot.val();
-      } else {
-        console.log('No Data Available');
-      }
-    });
-  }, []);
+    return (
+        <div className='displayed-playlist'  >
+            <div className='displayed-playlist-title'>
+                <h4>{playlist.name}</h4>
+                <p> Length {playlist.hours}:{playlist.minutes}</p>
+                <div className="playlist-displayed" >
+                    <i className={`fa-solid fa-chevron-${displayedPlaylist[index]
+                        ? 'up'
+                        : 'down'
+                        }`} onClick={() => setActivePlaylist(index)}></i>
 
-  return (
-    <p>This is where Saved Playlist will go!</p>
-  )
+                </div>
+            </div>
+            {displayedPlaylist[index] ?
+                <div className="playlist-container">
+                    <Playlist subset={playlist.podcasts} />
+                    <button onClick={() => deletePlaylist(playlist.id)}>delete please</button>
+                </div>
+
+                : null}
+
+        </div>
+
+
+    )
+
 }
 
-export default SavedPlaylists;
+
+
+export default SavedPlaylist;
