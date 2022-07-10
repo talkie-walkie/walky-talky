@@ -1,7 +1,7 @@
 import { useState } from "react";
 import SearchDetails from "./SearchDetails";
 
-const Search = ({ time, setTime, setGenreIds, setSearchTerm }) => {
+const Search = ({ time, setTime, setGenreIds, setSearchTerm, setIsSearching }) => {
   const [timeHours, setTimeHours] = useState(0);
   const [timeMinutes, setTimeMinutes] = useState(0);
   const [genres, setGenres] = useState([]);
@@ -19,6 +19,7 @@ const Search = ({ time, setTime, setGenreIds, setSearchTerm }) => {
       setTime(hours + minutes);
       setGenreIds(genres.join(','));
       setSearchTerm(searchInput);
+      setIsSearching(true);
     }
   };
   return (

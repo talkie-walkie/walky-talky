@@ -523,7 +523,13 @@ const data = [
   },
 ];
 
-const SearchResults = ({ time, genreIds, searchTerm }) => {
+const SearchResults = ({
+  time,
+  genreIds,
+  searchTerm,
+  isSearching,
+  setIsSearching,
+}) => {
   //states
   const [podcasts, setPodcasts] = useState([]);
   const [selectedSubset, setSelectedSubset] = useState([]);
@@ -570,25 +576,49 @@ const SearchResults = ({ time, genreIds, searchTerm }) => {
     }
   };
 
+  //function for if user wants a different subset of podcasts
+  const handleShuffleClick = () => {
+    if (subsets.length < 5) {
+      axios({
+        url: 'https://listen-api.listennotes.com/api/v2/search',
+        headers: {
+          'X-ListenAPI-Key': 'c17f9dde6c0743f195a962da663f6626',
+        },
+        params: {
+          q: searchTerm,
+          genre_ids: genreIds,
+          offset: podcasts.length,
+        },
+      }).then((response) => {
+        console.log(response.data.results);
+        setPodcasts([...podcasts, ...response.data.results]);
+        getSubsets([...podcasts, ...response.data.results], time);
+      });
+    } else {
+      getRandomSubset();
+    }
+  };
+
   useEffect(() => {
-    // if (genreIds && searchTerm) {
-    //   axios({
-    //     url: 'https://listen-api.listennotes.com/api/v2/search',
-    //     headers: {
-    //       'X-ListenAPI-Key': 'c17f9dde6c0743f195a962da663f6626',
-    //     },
-    //     params: {
-    //       q: searchTerm,
-    //       genre_ids: genreIds,
-    //     },
-    //   }).then((response) => {
-    //     console.log(response.data.results);
-    //     setPodcasts(response.data.results);
-    //     getSubsets(response.data.results, time);
-    //   });
-    // }
-    setPodcasts(data);
-    getSubsets(data, time);
+    if (isSearching) {
+      axios({
+        url: 'https://listen-api.listennotes.com/api/v2/search',
+        headers: {
+          'X-ListenAPI-Key': 'c17f9dde6c0743f195a962da663f6626',
+        },
+        params: {
+          q: searchTerm,
+          genre_ids: genreIds,
+        },
+      }).then((response) => {
+        console.log(response.data.results);
+        setPodcasts(response.data.results);
+        getSubsets(response.data.results, time);
+        setIsSearching(false);
+      });
+    }
+    // setPodcasts(data);
+    // getSubsets(data, time);
   }, [time, genreIds, searchTerm, getSubsets]);
 
   useEffect(() => {
@@ -600,6 +630,7 @@ const SearchResults = ({ time, genreIds, searchTerm }) => {
   return (
     <section>
       <h3>Search Results</h3>
+      <button onClick={handleShuffleClick}>Shuffle!!</button>
       <Playlist subset={selectedSubset} />
       <div>
         <label htmlFor="playlist-name">Name Your Playlist</label>

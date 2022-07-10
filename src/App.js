@@ -1,18 +1,19 @@
-import "./App.css";
+import './App.css';
 
-import "./styles/Search.css";
-import "./styles/PodcastTile.css";
-import { useState } from "react";
-import Search from "./components/Search";
+import './styles/Search.css';
+import './styles/PodcastTile.css';
+import { useState } from 'react';
+import Search from './components/Search';
 
-import Header from "./components/Header";
-import SearchResults from "./components/SearchResults";
-import { Route, Routes } from "react-router-dom";
+import Header from './components/Header';
+import SearchResults from './components/SearchResults';
+import { Route, Routes } from 'react-router-dom';
 
 function App() {
   const [time, setTime] = useState(0);
-  const [genreIds, setGenreIds] = useState("");
-  const [searchTerm, setSearchTerm] = useState("");
+  const [genreIds, setGenreIds] = useState('');
+  const [searchTerm, setSearchTerm] = useState('');
+  const [isSearching, setIsSearching] = useState(false);
 
   return (
     <div className="container">
@@ -28,11 +29,14 @@ function App() {
                 setTime={setTime}
                 setGenreIds={setGenreIds}
                 setSearchTerm={setSearchTerm}
+                setIsSearching={setIsSearching}
               />
               <SearchResults
                 time={time}
                 genreIds={genreIds}
                 searchTerm={searchTerm}
+                isSearching={isSearching}
+                setIsSearching={setIsSearching}
               />
             </>
           }
