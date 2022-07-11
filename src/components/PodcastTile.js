@@ -3,7 +3,7 @@ import { useState } from 'react';
 const PodcastTile = ({ podcastInfo }) => {
   const [displayDescription, setDisplayDescription] = useState(false);
 
-  console.log(podcastInfo);
+  // console.log(podcastInfo);
   // Use regex to remove html tags, opening and closing ellipses
   const description = podcastInfo.description_highlighted
     .replace(/<.+>/, '')
