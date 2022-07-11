@@ -628,13 +628,20 @@ const SearchResults = ({
   }, [getRandomSubset, podcasts.length, subsets]);
 
   return (
-    <section>
+    <section className="search-results-container">
       <h3>Search Results</h3>
-      <button onClick={handleShuffleClick}>Shuffle!!</button>
+      <button onClick={handleShuffleClick} class="search-button-pushable">
+        <span className="search-button-shadow"></span>
+        <span className="search-button-edge"></span>
+        <span className="search-button-front text">
+          Shuffle
+        </span>
+      </button>
       <Playlist subset={selectedSubset} />
       <div>
-        <label htmlFor="playlist-name">Name Your Playlist</label>
+        <label className="save-playlist-label" htmlFor="playlist-name">Name Your Playlist</label>
         <input
+          className="save-playlist-input"
           type="text"
           id="playlist-name"
           value={playlistName}
@@ -642,8 +649,12 @@ const SearchResults = ({
             setPlaylistName(e.target.value);
           }}
         />
-        <button onClick={() => savePlaylist(playlistName, selectedSubset)}>
-          Save Playlist
+        <button onClick={() => savePlaylist(playlistName, selectedSubset)} className="search-button-pushable">
+          <span className="search-button-shadow"></span>
+          <span className="search-button-edge"></span>
+          <span className="search-button-front text">
+            Save Playlist
+          </span>
         </button>
       </div>
     </section>
@@ -651,3 +662,7 @@ const SearchResults = ({
 };
 
 export default SearchResults;
+
+
+
+

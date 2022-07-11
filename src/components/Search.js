@@ -53,10 +53,10 @@ const Search = ({ time, setTime, setGenreIds, setSearchTerm, setIsSearching }) =
         {time ? (
           <SearchDetails setGenres={setGenres} setSearchInput={setSearchInput} />
         ) : null}
-        <button class="search-button-pushable">
-          <span class="search-button-shadow"></span>
-          <span class="search-button-edge"></span>
-          <span class="search-button-front text">
+        <button className="search-button-pushable">
+          <span className="search-button-shadow"></span>
+          <span className="search-button-edge"></span>
+          <span className="search-button-front text">
             Submit
           </span>
         </button>
@@ -66,3 +66,5 @@ const Search = ({ time, setTime, setGenreIds, setSearchTerm, setIsSearching }) =
   );
 };
 export default Search;
+
+

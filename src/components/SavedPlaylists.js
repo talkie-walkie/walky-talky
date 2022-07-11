@@ -45,7 +45,7 @@ const SavedPlaylists = () => {
   }
 
   return (
-    <section className='saved-playlists' >
+    <section>
       {
         playlists.map((playlist, index) => (
           <SavedPlaylist playlist={playlist}

@@ -9,6 +9,8 @@
 .podcast-img-and-details {
   display: flex;
   gap: .5rem;
+  background-color: white;
+  text-align: start;
 }
 
 .podcast-img {
@@ -25,6 +27,10 @@
   font-weight: 400;
 }
 
+.displayed-playlist-title h4 {
+  font-size: clamp(1rem, 5vw, 3rem);
+}
+
 .podcast-details h5 {
   font-size: clamp(.9rem, 3vw, 2rem);
   font-weight: 300;
@@ -36,4 +42,13 @@
   flex-basis: 93%;
   margin: 0 auto;
   word-break: break-word;
+  background-color: white;
+}
+
+.playlist-container p{
+  text-align: start;
+}
+
+.playlist-container {
+  text-align: center;
 }

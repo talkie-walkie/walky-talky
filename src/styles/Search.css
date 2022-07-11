@@ -21,6 +21,7 @@
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
+  margin: 10px 0 35px 0;
 }
 
 .search-button-shadow {
@@ -171,7 +172,7 @@ input::-webkit-inner-spin-button {
 }
 
 .genre-inputs-title{
-
+  margin-bottom: 15px;
 }
 
 .genre-input {
@@ -180,7 +181,8 @@ input::-webkit-inner-spin-button {
 }
 
 .genre-input input:checked + .genre-label {
-  background-color: var(--accent);
+  background-color: rgb(77, 202, 211);
+  /* background-color: var(--accent); */
 }
 
 .genre-label {
@@ -197,3 +199,21 @@ input::-webkit-inner-spin-button {
   outline: none;
 }
 
+h3 {
+  color: white;
+  text-align: center;
+  font-size: 1.6rem;
+  margin-bottom: 10px;
+}
+
+.search-results-container {
+text-align: center;
+}
+
+.save-playlist-label {
+  color: white;
+}
+
+.save-playlist-input {
+ margin-bottom: 15px;
+}
