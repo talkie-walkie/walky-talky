@@ -1,17 +1,17 @@
 import { useState } from 'react';
 
-const PodcastTile = ({ podcastInfo }) => {
+const PodcastTile = ({ podcastInfo, handleDragStart, handleDrop, isDraggable }) => {
   const [displayDescription, setDisplayDescription] = useState(false);
 
   // console.log(podcastInfo);
   // Use regex to remove html tags, opening and closing ellipses
   const description = podcastInfo.description_highlighted
-    .replace(/<.+>/, '')
+    .replace(/<.+>/g, '')
     .replace(/^\.\.\./, '')
     .replace(/\.\.\.$/, '');
 
   return (
-    <div className="podcast-tile" onClick={() => setDisplayDescription(!displayDescription)}>
+    <div id={podcastInfo.id} onDragStart={handleDragStart} onDrop={handleDrop} onDragOver={(e) => e.preventDefault()} className="podcast-tile" draggable={isDraggable} onClick={() => setDisplayDescription(!displayDescription)}>
       <div className="podcast-img-and-details">
         <div className="podcast-img">
           <img
@@ -22,18 +22,6 @@ const PodcastTile = ({ podcastInfo }) => {
         <div className="podcast-details">
           <h4>{podcastInfo.publisher_original}</h4>
           <h5>{podcastInfo.title_original}</h5>
-          {/* <p className="see-description" role="button" onClick={() => setDisplayDescription(!displayDescription)}>
-            {
-              displayDescription
-              ? <>
-                <i className="fa-solid fa-chevron-down"></i> Hide description
-              </>
-        
-              : <>
-              <i className="fa-solid fa-chevron-right"></i> Display description
-            </>
-            }
-          </p> */}
         </div>
       </div>
       {displayDescription ? (

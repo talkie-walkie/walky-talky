@@ -1,7 +1,6 @@
 import Playlist from "./Playlist";
 
 const SavedPlaylist = ({ playlist, index, setActivePlaylist, displayedPlaylist, deletePlaylist }) => {
-    console.log(playlist.id);
 
     return (
         <div className='displayed-playlist'  >
@@ -18,7 +17,7 @@ const SavedPlaylist = ({ playlist, index, setActivePlaylist, displayedPlaylist, 
             </div>
             {displayedPlaylist[index] ?
                 <div className="playlist-container">
-                    <Playlist subset={playlist.podcasts} />
+                    <Playlist subset={playlist.podcasts} isDraggable={false} />
                     <button onClick={() => deletePlaylist(playlist.id)}>delete please</button>
                 </div>
 
