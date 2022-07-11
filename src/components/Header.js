@@ -1,6 +1,6 @@
 import { useWindowWidth } from '@react-hook/window-size';
 import { Link } from 'react-router-dom';
-import './Header.css';
+import '../styles/Header.css';
 
 const Header = (props) => {
   const { time } = props;
@@ -24,10 +24,6 @@ const Header = (props) => {
       </Link> : <Link to="/">
         <i className="fa-solid fa-house-chimney"></i>
       </Link>}
-
-
-
-
     </header>
   );
 };

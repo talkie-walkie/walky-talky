@@ -19,37 +19,39 @@ function App() {
 
   return (
     <div className="container">
-      <Routes>
-        <Route path="SavedPlaylist" element={
-          <>
-            <Header home={false} />
-            <SavedPlaylists />
-          </>
-        } />
-        <Route
-          path="/"
-          element={
+      <div className="wrapper">
+        <Routes>
+          <Route path="SavedPlaylist" element={
             <>
-              <Header time={time} home={true} />
-              <Search
-                time={time}
-                setTime={setTime}
-                setGenreIds={setGenreIds}
-                setSearchTerm={setSearchTerm}
-                setIsSearching={setIsSearching}
-              />
-              <SearchResults
-                time={time}
-                genreIds={genreIds}
-                searchTerm={searchTerm}
-                isSearching={isSearching}
-                setIsSearching={setIsSearching}
-              />
+              <Header home={false} />
+              <SavedPlaylists />
             </>
-          }
-        />
-        <Route path="*" element={<p>ERROR</p>} />
-      </Routes>
+          } />
+          <Route
+            path="/"
+            element={
+              <>
+                <Header time={time} home={true} />
+                <Search
+                  time={time}
+                  setTime={setTime}
+                  setGenreIds={setGenreIds}
+                  setSearchTerm={setSearchTerm}
+                  setIsSearching={setIsSearching}
+                />
+                <SearchResults
+                  time={time}
+                  genreIds={genreIds}
+                  searchTerm={searchTerm}
+                  isSearching={isSearching}
+                  setIsSearching={setIsSearching}
+                />
+              </>
+            }
+          />
+          <Route path="*" element={<p>ERROR</p>} />
+        </Routes>
+      </div>
     </div>
   );
 }

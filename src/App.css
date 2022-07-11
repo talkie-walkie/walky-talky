@@ -116,22 +116,22 @@ select {
   text-transform: none;
 }
 button,
-html [type='button'],
-[type='reset'],
-[type='submit'] {
+html [type="button"],
+[type="reset"],
+[type="submit"] {
   -webkit-appearance: button;
 }
 button::-moz-focus-inner,
-[type='button']::-moz-focus-inner,
-[type='reset']::-moz-focus-inner,
-[type='submit']::-moz-focus-inner {
+[type="button"]::-moz-focus-inner,
+[type="reset"]::-moz-focus-inner,
+[type="submit"]::-moz-focus-inner {
   border-style: none;
   padding: 0;
 }
 button:-moz-focusring,
-[type='button']:-moz-focusring,
-[type='reset']:-moz-focusring,
-[type='submit']:-moz-focusring {
+[type="button"]:-moz-focusring,
+[type="reset"]:-moz-focusring,
+[type="submit"]:-moz-focusring {
   outline: 1px dotted ButtonText;
 }
 fieldset {
@@ -152,21 +152,21 @@ progress {
 textarea {
   overflow: auto;
 }
-[type='checkbox'],
-[type='radio'] {
+[type="checkbox"],
+[type="radio"] {
   box-sizing: border-box;
   padding: 0;
 }
-[type='number']::-webkit-inner-spin-button,
-[type='number']::-webkit-outer-spin-button {
+[type="number"]::-webkit-inner-spin-button,
+[type="number"]::-webkit-outer-spin-button {
   height: auto;
 }
-[type='search'] {
+[type="search"] {
   -webkit-appearance: textfield;
   outline-offset: -2px;
 }
-[type='search']::-webkit-search-cancel-button,
-[type='search']::-webkit-search-decoration {
+[type="search"]::-webkit-search-cancel-button,
+[type="search"]::-webkit-search-decoration {
   -webkit-appearance: none;
 }
 ::-webkit-file-upload-button {
@@ -214,27 +214,40 @@ html {
 }
 
 body {
-  font-family: 'Rubik', sans-serif;
+  font-family: "Rubik", sans-serif;
 }
 
-h1, h2, h3, h4, h5, p {
+h1,
+h2,
+h3,
+h4,
+h5,
+p {
   margin: 0;
   padding: 0;
 }
 
 h1,
 h2 {
-  font-family: 'Edu QLD Beginner', cursive;
+  font-family: "Edu QLD Beginner", cursive;
   letter-spacing: 1px;
-}
-
-.container {
-  width: min(90%, 1000px);
-  margin: 0 auto;
 }
 
 img {
   width: 100%;
   height: auto;
   display: block;
+}
+
+.container {
+  min-height: 100vh;
+  background-color: #00203f;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25' viewBox='0 0 1600 800'%3E%3Cg stroke='%23000000' stroke-width='66.7' stroke-opacity='0.05' %3E%3Ccircle fill='%2300203F' cx='0' cy='0' r='1800'/%3E%3Ccircle fill='%23002243' cx='0' cy='0' r='1700'/%3E%3Ccircle fill='%23002446' cx='0' cy='0' r='1600'/%3E%3Ccircle fill='%2300264a' cx='0' cy='0' r='1500'/%3E%3Ccircle fill='%2300284e' cx='0' cy='0' r='1400'/%3E%3Ccircle fill='%23002a52' cx='0' cy='0' r='1300'/%3E%3Ccircle fill='%23002c55' cx='0' cy='0' r='1200'/%3E%3Ccircle fill='%23002e59' cx='0' cy='0' r='1100'/%3E%3Ccircle fill='%2300305d' cx='0' cy='0' r='1000'/%3E%3Ccircle fill='%23003261' cx='0' cy='0' r='900'/%3E%3Ccircle fill='%23003465' cx='0' cy='0' r='800'/%3E%3Ccircle fill='%23003669' cx='0' cy='0' r='700'/%3E%3Ccircle fill='%2300386d' cx='0' cy='0' r='600'/%3E%3Ccircle fill='%23003a71' cx='0' cy='0' r='500'/%3E%3Ccircle fill='%23003c75' cx='0' cy='0' r='400'/%3E%3Ccircle fill='%23003e79' cx='0' cy='0' r='300'/%3E%3Ccircle fill='%2300407d' cx='0' cy='0' r='200'/%3E%3Ccircle fill='%23004281' cx='0' cy='0' r='100'/%3E%3C/g%3E%3C/svg%3E");
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+.wrapper {
+  width: min(90%, 1000px);
+  margin: 0 auto;
 }
