@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-const PodcastTile = ({ podcastInfo, handleDragStart, handleDrop, isDraggable }) => {
+const PodcastTile = ({ podcastInfo, handleDragStart, handleDrop, handleDragEnter, isDraggable }) => {
   const [displayDescription, setDisplayDescription] = useState(false);
 
   // console.log(podcastInfo);
@@ -11,7 +11,7 @@ const PodcastTile = ({ podcastInfo, handleDragStart, handleDrop, isDraggable }) 
     .replace(/\.\.\.$/, '');
 
   return (
-    <div id={podcastInfo.id} onDragStart={handleDragStart} onDrop={handleDrop} onDragOver={(e) => e.preventDefault()} className="podcast-tile" draggable={isDraggable} onClick={() => setDisplayDescription(!displayDescription)}>
+    <div id={podcastInfo.id} onDragStart={handleDragStart} onDragEnter={handleDragEnter} onDragOver={(e) => e.preventDefault()} className="podcast-tile" draggable={isDraggable} onClick={() => setDisplayDescription(!displayDescription)}>
       <div className="podcast-img-and-details">
         <div className="podcast-img">
           <img
