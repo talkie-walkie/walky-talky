@@ -1,5 +1,5 @@
-import { useState } from "react"
 import Playlist from "./Playlist";
+
 const SavedPlaylist = ({ playlist, index, setActivePlaylist, displayedPlaylist, deletePlaylist }) => {
     console.log(playlist.id);
 
