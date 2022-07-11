@@ -6,10 +6,12 @@ header {
   align-items: flex-end;
   position: relative;
   transition: min-height 1.5s ease-out;
+  color: white;
+  margin-bottom: 35px;
 }
 
 header.shrink {
-  min-height: 15vh;
+  min-height: 13vh;
 }
 
 /* header title */
@@ -64,12 +66,13 @@ header.shrink .header-subheader {
 
 .playlist-button {
   position: absolute;
-  top: 20px;
+  top: 40px;
   right: 0px;
   display: flex;
   align-items: center;
   column-gap: 10px;
   overflow-x: hidden;
+  color: white;
 }
 
 .playlist-button i {

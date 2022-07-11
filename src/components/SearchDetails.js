@@ -29,7 +29,7 @@ const SearchDetails = ({ setGenres, setSearchInput }) => {
 
   return (
     <>
-      <label className="sr-only" htmlFor="searchInput">
+      <label className="search-input-label" htmlFor="searchInput">
         What topic are you interested in?
       </label>
       <input
@@ -38,10 +38,10 @@ const SearchDetails = ({ setGenres, setSearchInput }) => {
         type="text"
         name="searchInput"
         id="searchInput"
-        placeholder="What topic are you interested in?"
         required
       />
       <div className="genre-inputs">
+        <p className="genre-inputs-title" >Choose one or more genres:</p>
         {genreArray.map((item, index) => (
           <div className="genre-input" key={item.genreId}>
             <input

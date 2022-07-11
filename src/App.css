@@ -209,6 +209,11 @@ template {
   overflow: hidden;
 }
 
+:root {
+--primary: #00203f;
+--accent: #d9a21b;
+}
+
 html {
   font-size: 125%;
 }
