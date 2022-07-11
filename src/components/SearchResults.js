@@ -523,7 +523,13 @@ const data = [
   },
 ];
 
-const SearchResults = ({ time, genreId, searchTerm }) => {
+const SearchResults = ({
+  time,
+  genreIds,
+  searchTerm,
+  isSearching,
+  setIsSearching,
+}) => {
   //states
   const [podcasts, setPodcasts] = useState([]);
   const [selectedSubset, setSelectedSubset] = useState([]);
@@ -542,40 +548,78 @@ const SearchResults = ({ time, genreId, searchTerm }) => {
     }
   }, [podcasts, subsets, time]);
 
-  const savePlaylist = (name, selectedSubset) => {
+  const calculateTime = (time) => {
+    const hours = Math.floor(time / 3600);
+    const minutes = Math.floor((time % 3600) / 60);
+    const seconds = (time % 3600) % 60;
+    console.log(hours, minutes, seconds, time);
+    return [hours, minutes, seconds];
+  };
+
+  const savePlaylist = (name) => {
     if (name && selectedSubset) {
       const database = getDatabase(firebase);
       const dbRef = ref(database);
 
+      const [hours, minutes, seconds] = calculateTime(time);
+
       push(dbRef, {
-        playlistName: name,
+        name: name,
+        genreIds: genreIds,
         podcasts: selectedSubset,
+        hours: hours,
+        minutes: minutes,
+        seconds: seconds,
       });
 
       setPlaylistName('');
     }
   };
 
+  //function for if user wants a different subset of podcasts
+  const handleShuffleClick = () => {
+    if (subsets.length < 5) {
+      axios({
+        url: 'https://listen-api.listennotes.com/api/v2/search',
+        headers: {
+          'X-ListenAPI-Key': 'c17f9dde6c0743f195a962da663f6626',
+        },
+        params: {
+          q: searchTerm,
+          genre_ids: genreIds,
+          offset: podcasts.length,
+        },
+      }).then((response) => {
+        console.log(response.data.results);
+        setPodcasts([...podcasts, ...response.data.results]);
+        getSubsets([...podcasts, ...response.data.results], time);
+      });
+    } else {
+      getRandomSubset();
+    }
+  };
+
   useEffect(() => {
-    // if (genreId && searchTerm) {
-    //   axios({
-    //     url: 'https://listen-api.listennotes.com/api/v2/search',
-    //     headers: {
-    //       'X-ListenAPI-Key': 'c17f9dde6c0743f195a962da663f6626',
-    //     },
-    //     params: {
-    //       q: searchTerm,
-    //       genre_ids: genreId,
-    //     },
-    //   }).then((response) => {
-    //     console.log(response.data.results);
-    //     setPodcasts(response.data.results);
-    //     getSubsets(response.data.results, time);
-    //   });
-    // }
-    setPodcasts(data);
-    getSubsets(data, time);
-  }, [time, genreId, searchTerm, getSubsets]);
+    if (isSearching) {
+      axios({
+        url: 'https://listen-api.listennotes.com/api/v2/search',
+        headers: {
+          'X-ListenAPI-Key': 'c17f9dde6c0743f195a962da663f6626',
+        },
+        params: {
+          q: searchTerm,
+          genre_ids: genreIds,
+        },
+      }).then((response) => {
+        console.log(response.data.results);
+        setPodcasts(response.data.results);
+        getSubsets(response.data.results, time);
+        setIsSearching(false);
+      });
+    }
+    // setPodcasts(data);
+    // getSubsets(data, time);
+  }, [time, genreIds, searchTerm, getSubsets]);
 
   useEffect(() => {
     if (podcasts.length > 0) {
@@ -586,6 +630,7 @@ const SearchResults = ({ time, genreId, searchTerm }) => {
   return (
     <section>
       <h3>Search Results</h3>
+      <button onClick={handleShuffleClick}>Shuffle!!</button>
       <Playlist subset={selectedSubset} />
       <div>
         <label htmlFor="playlist-name">Name Your Playlist</label>
