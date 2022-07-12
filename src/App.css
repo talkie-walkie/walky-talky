@@ -210,8 +210,9 @@ template {
 }
 
 :root {
---primary: #00203f;
---accent: #d9a21b;
+--primary: hsl(210, 100%, 12%);
+--accent: hsl(43, 78%, 48%);
+--text: hsl(43 100% 90%);
 }
 
 html {

@@ -6,7 +6,7 @@ header {
   align-items: flex-end;
   position: relative;
   transition: min-height 1.5s ease-out;
-  color: white;
+  color: var(--text);
   margin-bottom: 35px;
 }
 
@@ -64,6 +64,10 @@ header.shrink .header-subheader {
 
 /* saved playlist menu */
 
+i {
+  color: var(--text);
+}
+
 .playlist-button {
   position: absolute;
   top: 40px;
@@ -72,7 +76,6 @@ header.shrink .header-subheader {
   align-items: center;
   column-gap: 10px;
   overflow-x: hidden;
-  color: white;
 }
 
 .playlist-button i {
@@ -104,5 +107,4 @@ header.shrink .header-subheader {
   top: 20px;
   right: 0px;
   padding: 10px 20px;
-  color: white;
 }

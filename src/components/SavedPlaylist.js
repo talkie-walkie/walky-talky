@@ -25,16 +25,24 @@ const SavedPlaylist = ({ playlist, index, setActivePlaylist, displayedPlaylist, 
                         </span>
                     </button>
                 </div>
-
                 : null}
-
         </div>
-
-
-    )
-
-}
-
-
+      </div>
+      {displayedPlaylist[index] ? (
+        <div className="playlist-container">
+          <Playlist subset={playlist.podcasts} />
+          <button
+            onClick={() => deletePlaylist(playlist.id)}
+            className="search-button-pushable"
+          >
+            <span className="search-button-shadow"></span>
+            <span className="search-button-edge"></span>
+            <span className="search-button-front text">Delete List</span>
+          </button>
+        </div>
+      ) : null}
+    </div>
+  );
+};
 
 export default SavedPlaylist;
