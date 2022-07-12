@@ -541,7 +541,10 @@ const SearchResults = ({
   const getRandomSubset = useCallback(() => {
     if (subsets.length > 0) {
       const index = Math.floor(Math.random() * subsets.length);
-      setSelectedSubset(subsets[index]);
+      const indexedSubset = subsets[index].map((podcast, index) => {
+        return {...podcast, order: index};
+      })
+      setSelectedSubset(indexedSubset);
     } else {
       //If no subset matches user's indicated 'time', get single podcast that most closely matches 'time'
       setSelectedSubset([getBestPodcast(time, podcasts)]);

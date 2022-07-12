@@ -60,7 +60,6 @@ const Search = ({ time, setTime, setGenreIds, setSearchTerm, setIsSearching }) =
             Submit
           </span>
         </button>
-
       </form>
     </div>
   );

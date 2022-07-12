@@ -1,7 +1,6 @@
 import Playlist from "./Playlist";
 
 const SavedPlaylist = ({ playlist, index, setActivePlaylist, displayedPlaylist, deletePlaylist }) => {
-    console.log(playlist.id);
 
     return (
         <div className='displayed-playlist'  >

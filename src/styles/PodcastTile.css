@@ -20,10 +20,12 @@
 .podcast-details {
   flex-basis: 66%;
   align-self: center;
+  white-space: wrap;
+  overflow: hidden;
 }
 
 .podcast-details h4 {
-  font-size: clamp(1rem, 5vw, 3rem);
+  font-size: 1rem;
   font-weight: 400;
 }
 
@@ -32,7 +34,7 @@
 }
 
 .podcast-details h5 {
-  font-size: clamp(.9rem, 3vw, 2rem);
+  font-size: .9rem;
   font-weight: 300;
 }
 

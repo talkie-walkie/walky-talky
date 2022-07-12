@@ -5,7 +5,7 @@ const useSubsets = (defaultArray) => {
   const [subsets, setSubsets] = useState(defaultArray);
 
   const getSubsets = useCallback((array, walkTime) => {
-    const [lowerLimit, upperLimit] = [walkTime * 0.99, walkTime * 1.01];
+    const [lowerLimit, upperLimit] = [walkTime * 0.97, walkTime * 1.03];
 
     function recursivelyFindSubsets(index = 0, sum = 0, subset = []) {
       if (sum < upperLimit && sum > lowerLimit) {
