@@ -75,8 +75,8 @@ header.shrink .header-subheader {
 .playlist-button i {
   order: 1;
   font-size: 2rem;
-  background-color: white;
   padding: 0 20px;
+  z-index: 1;
 }
 
 .playlist-button i:hover + p,
@@ -89,8 +89,8 @@ header.shrink .header-subheader {
   font-weight: 300;
   transform: translate(125%);
   opacity: 0;
+  overflow: hidden;
   transition: transform 0.3s ease-out, opacity 0.3s ease-out;
-  z-index: -1;
 }
 
 .playlist-button p.visible {

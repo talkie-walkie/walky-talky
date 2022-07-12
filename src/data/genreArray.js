@@ -4,7 +4,7 @@ const genreArray = [
     genreId: 144,
   },
   {
-    genre: 'Sport',
+    genre: 'Sports',
     genreId: 77,
   },
   {

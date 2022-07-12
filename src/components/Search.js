@@ -53,7 +53,7 @@ const Search = ({ time, setTime, setGenreIds, setSearchTerm, setIsSearching }) =
         {time ? (
           <SearchDetails setGenres={setGenres} setSearchInput={setSearchInput} />
         ) : null}
-        <button className="time-submit-button">Submit</button>
+        <button onClick={(e) => {console.log(e)}}className="time-submit-button">Submit</button>
       </form>
     </div>
   );
