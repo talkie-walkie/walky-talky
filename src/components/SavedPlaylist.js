@@ -7,7 +7,7 @@ const SavedPlaylist = ({ playlist, index, setActivePlaylist, displayedPlaylist, 
             <div className='displayed-playlist-title'>
                 <h4>{playlist.name}</h4>
                 <div className="playlist-displayed" >
-                <p> Length {playlist.hours}:{playlist.minutes}</p>
+                    <p> Length {playlist.hours}:{playlist.minutes}</p>
                     <i className={`fa-solid fa-chevron-${displayedPlaylist[index]
                         ? 'up'
                         : 'down'
