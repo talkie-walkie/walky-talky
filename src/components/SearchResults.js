@@ -7,6 +7,7 @@ import useSubsets from '../helperFunctions/useSubsets';
 import getBestPodcast from '../helperFunctions/getBestPodcast';
 import Playlist from './Playlist';
 import { useCallback } from 'react';
+import WarningModal from './WarningModal';
 // const data = [
 //   {
 //     audio: 'https://www.listennotes.com/e/p/702e7a928683439c81f7e06268ff27ad/',
@@ -529,6 +530,7 @@ const SearchResults = ({
   searchTerm,
   isSearching,
   setIsSearching,
+  setSearchTerm,
 }) => {
   //states
   const [podcasts, setPodcasts] = useState([]);
@@ -542,8 +544,8 @@ const SearchResults = ({
     if (subsets.length > 0) {
       const index = Math.floor(Math.random() * subsets.length);
       const indexedSubset = subsets[index].map((podcast, index) => {
-        return {...podcast, order: index};
-      })
+        return { ...podcast, order: index };
+      });
       setSelectedSubset(indexedSubset);
     } else {
       //If no subset matches user's indicated 'time', get single podcast that most closely matches 'time'
@@ -630,19 +632,34 @@ const SearchResults = ({
     }
   }, [getRandomSubset, podcasts.length, subsets]);
 
-  return (
+  const handleClickOk = () => {
+    setSearchTerm('');
+  };
+
+  return podcasts.length === 0 ? (
+    <WarningModal
+      message={`No results. Please try entering a different search term or including
+    more genres`}
+      handleClickOk={handleClickOk}
+      buttonText={`Ok`}
+    />
+  ) : (
     <section className="search-results-container">
       <h3>Search Results</h3>
       <button onClick={handleShuffleClick} className="search-button-pushable">
         <span className="search-button-shadow"></span>
         <span className="search-button-edge"></span>
-        <span className="search-button-front text">
-          Shuffle
-        </span>
+        <span className="search-button-front text">Shuffle</span>
       </button>
-      <Playlist subset={selectedSubset} setSelectedSubset={setSelectedSubset} isDraggable={true} />
+      <Playlist
+        subset={selectedSubset}
+        setSelectedSubset={setSelectedSubset}
+        isDraggable={true}
+      />
       <div>
-        <label className="save-playlist-label" htmlFor="playlist-name">Name Your Playlist</label>
+        <label className="save-playlist-label" htmlFor="playlist-name">
+          Name Your Playlist
+        </label>
         <input
           className="save-playlist-input"
           type="text"
@@ -652,12 +669,13 @@ const SearchResults = ({
             setPlaylistName(e.target.value);
           }}
         />
-        <button onClick={() => savePlaylist(playlistName, selectedSubset)} className="search-button-pushable">
+        <button
+          onClick={() => savePlaylist(playlistName, selectedSubset)}
+          className="search-button-pushable"
+        >
           <span className="search-button-shadow"></span>
           <span className="search-button-edge"></span>
-          <span className="search-button-front text">
-            Save Playlist
-          </span>
+          <span className="search-button-front text">Save Playlist</span>
         </button>
       </div>
     </section>
@@ -665,7 +683,3 @@ const SearchResults = ({
 };
 
 export default SearchResults;
-
-
-
-

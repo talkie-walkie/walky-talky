@@ -48,6 +48,7 @@ function App() {
                   searchTerm={searchTerm}
                   isSearching={isSearching}
                   setIsSearching={setIsSearching}
+                  setSearchTerm={setSearchTerm}
                 />
                 : null
                 }
