@@ -2,6 +2,7 @@ import './App.css';
 
 import './styles/Search.css';
 import './styles/PodcastTile.css';
+import './styles/Footer.css'
 import { useState } from 'react';
 import Search from './components/Search';
 
@@ -10,6 +11,7 @@ import Header from "./components/Header";
 import SearchResults from "./components/SearchResults";
 import { Route, Routes } from "react-router-dom";
 import SavedPlaylists from "./components/SavedPlaylists";
+import Footer from './components/Footer';
 
 function App() {
   const [time, setTime] = useState(0);
@@ -18,6 +20,7 @@ function App() {
   const [isSearching, setIsSearching] = useState(false);
 
   return (
+    <>
     <div className="container">
       <div className="wrapper">
         <Routes>
@@ -53,6 +56,8 @@ function App() {
         </Routes>
       </div>
     </div>
+      <Footer />
+      </>
   );
 }
 
