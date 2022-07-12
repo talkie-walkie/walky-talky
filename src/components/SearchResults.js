@@ -1,13 +1,12 @@
-import { useState } from 'react';
-import { useEffect } from 'react';
-import firebase from '../firebase';
-import { ref, getDatabase, push } from 'firebase/database';
-import axios from 'axios';
-import useSubsets from '../helperFunctions/useSubsets';
-import getBestPodcast from '../helperFunctions/getBestPodcast';
-import Playlist from './Playlist';
-import { useCallback } from 'react';
-import WarningModal from './WarningModal';
+import { useState, useEffect, useRef, useCallback } from "react";
+import firebase from "../firebase";
+import { ref, getDatabase, push } from "firebase/database";
+import axios from "axios";
+import useSubsets from "../helperFunctions/useSubsets";
+import getBestPodcast from "../helperFunctions/getBestPodcast";
+import calculateTime from "../helperFunctions/calculateTime";
+import Playlist from "./Playlist";
+import WarningModal from "./WarningModal";
 // const data = [
 //   {
 //     audio: 'https://www.listennotes.com/e/p/702e7a928683439c81f7e06268ff27ad/',
@@ -535,7 +534,10 @@ const SearchResults = ({
   //states
   const [podcasts, setPodcasts] = useState([]);
   const [selectedSubset, setSelectedSubset] = useState([]);
-  const [playlistName, setPlaylistName] = useState('');
+  const [playlistName, setPlaylistName] = useState("");
+
+  // ref of search results so that they can be scrolled into view when ready
+  const searchResultsSection = useRef();
 
   //custom hook
   const [subsets, getSubsets] = useSubsets([]);
@@ -553,14 +555,6 @@ const SearchResults = ({
     }
   }, [podcasts, subsets, time]);
 
-  const calculateTime = (time) => {
-    const hours = Math.floor(time / 3600);
-    const minutes = Math.floor((time % 3600) / 60);
-    const seconds = (time % 3600) % 60;
-    console.log(hours, minutes, seconds, time);
-    return [hours, minutes, seconds];
-  };
-
   const savePlaylist = (name) => {
     if (name && selectedSubset) {
       const database = getDatabase(firebase);
@@ -577,7 +571,7 @@ const SearchResults = ({
         seconds: seconds,
       });
 
-      setPlaylistName('');
+      setPlaylistName("");
     }
   };
 
@@ -585,9 +579,9 @@ const SearchResults = ({
   const handleShuffleClick = () => {
     if (subsets.length < 5) {
       axios({
-        url: 'https://listen-api.listennotes.com/api/v2/search',
+        url: "https://listen-api.listennotes.com/api/v2/search",
         headers: {
-          'X-ListenAPI-Key': 'c17f9dde6c0743f195a962da663f6626',
+          "X-ListenAPI-Key": "c17f9dde6c0743f195a962da663f6626",
         },
         params: {
           q: searchTerm,
@@ -607,9 +601,9 @@ const SearchResults = ({
   useEffect(() => {
     if (isSearching) {
       axios({
-        url: 'https://listen-api.listennotes.com/api/v2/search',
+        url: "https://listen-api.listennotes.com/api/v2/search",
         headers: {
-          'X-ListenAPI-Key': 'c17f9dde6c0743f195a962da663f6626',
+          "X-ListenAPI-Key": "c17f9dde6c0743f195a962da663f6626",
         },
         params: {
           q: searchTerm,
@@ -629,14 +623,15 @@ const SearchResults = ({
   useEffect(() => {
     if (podcasts.length > 0) {
       getRandomSubset();
+      searchResultsSection.current.scrollIntoView();
     }
   }, [getRandomSubset, podcasts.length, subsets]);
 
   const handleClickOk = () => {
-    setSearchTerm('');
+    setSearchTerm("");
   };
 
-  return podcasts.length === 0 ? (
+  return podcasts.length === 0 && !isSearching ? (
     <WarningModal
       message={`No results. Please try entering a different search term or including
     more genres`}
@@ -644,7 +639,7 @@ const SearchResults = ({
       buttonText={`Ok`}
     />
   ) : (
-    <section className="search-results-container">
+    <section className="search-results-container" ref={searchResultsSection}>
       <h3>Search Results</h3>
       <button onClick={handleShuffleClick} className="search-button-pushable">
         <span className="search-button-shadow"></span>
