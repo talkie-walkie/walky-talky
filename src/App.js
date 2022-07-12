@@ -20,7 +20,6 @@ function App() {
   const [isSearching, setIsSearching] = useState(false);
 
   return (
-    <>
     <div className="container">
       <div className="wrapper">
         <Routes>
@@ -55,9 +54,8 @@ function App() {
           <Route path="*" element={<p>ERROR</p>} />
         </Routes>
       </div>
-    </div>
       <Footer />
-      </>
+    </div>
   );
 }
 
