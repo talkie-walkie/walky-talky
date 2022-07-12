@@ -53,9 +53,17 @@ const Search = ({ time, setTime, setGenreIds, setSearchTerm, setIsSearching }) =
         {time ? (
           <SearchDetails setGenres={setGenres} setSearchInput={setSearchInput} />
         ) : null}
-        <button onClick={(e) => {console.log(e)}}className="time-submit-button">Submit</button>
+        <button className="search-button-pushable">
+          <span className="search-button-shadow"></span>
+          <span className="search-button-edge"></span>
+          <span className="search-button-front text">
+            Submit
+          </span>
+        </button>
       </form>
     </div>
   );
 };
 export default Search;
+
+

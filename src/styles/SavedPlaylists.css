@@ -21,7 +21,7 @@
 }
 
 .podcast-details h4 {
-  font-size: clamp(1rem, 5vw, 3rem);
+  font-size: clamp(2rem, 5vw, 3rem);
   font-weight: 400;
 }
 
@@ -39,14 +39,17 @@
 }
 
 .playlist-displayed {
-  font-size: 1.5rem;
+  font-size: 1rem;
   background: transparent;
   border-color: transparent;
   cursor: pointer;
+  display: flex;
+  justify-content: space-between ;
   
 }
 .displayed-playlist-title{
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  flex-direction: column;
+  margin-bottom: 15px;
+  color: white;
 }
