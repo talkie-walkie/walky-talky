@@ -13,20 +13,22 @@
   cursor: pointer;
   display: flex;
   justify-content: space-between ;
-  padding-bottom: 8px;
+}
+.displayed-playlist{
+background-color:rgba(255, 255, 255, 0.1);
+border-radius: 5px;
+margin: 15px 0;
 }
 
 .displayed-playlist-title{
   display: flex;
   flex-direction: column;
-  margin-bottom: 15px;
   color: hsl(43deg 100% 90%);;
-  background-color:rgba(255, 255, 255, 0.1);
-  padding: 5px 25px;
+  padding: 15px 25px;
   border-radius: 5px;
+  cursor: pointer;
 }
-.playlist-container{
+.playlist-container .podcast-tile{
   width: 90%;
   margin: 0 auto;
-  background-color:rgba(255, 255, 255, 0.1);
 }

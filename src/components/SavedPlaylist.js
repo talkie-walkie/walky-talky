@@ -4,14 +4,14 @@ const SavedPlaylist = ({ playlist, index, setActivePlaylist, displayedPlaylist, 
 
     return (
         <div className='displayed-playlist'  >
-            <div className='displayed-playlist-title'>
+            <div className='displayed-playlist-title' onClick={() => setActivePlaylist(index)}>
                 <h4>{playlist.name}</h4>
                 <div className="playlist-displayed" >
                     <p> Length {playlist.hours}:{playlist.minutes}</p>
                     <i className={`fa-solid fa-chevron-${displayedPlaylist[index]
                         ? 'up'
                         : 'down'
-                        }`} onClick={() => setActivePlaylist(index)}></i>
+                        }`} ></i>
                 </div>
             </div>
             {displayedPlaylist[index] ?
