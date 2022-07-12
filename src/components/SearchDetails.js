@@ -41,8 +41,8 @@ const SearchDetails = ({ setGenres, setSearchInput }) => {
         autoFocus
         required
       />
+      <p className="genre-inputs-title">Choose one or more genres:</p>
       <div className="genre-inputs">
-        <p className="genre-inputs-title" >Choose one or more genres:</p>
         {genreArray.map((item, index) => (
           <div className="genre-input" key={item.genreId}>
             <input
