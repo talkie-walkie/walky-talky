@@ -1,6 +1,6 @@
 .search-form {
   text-align: center;
-  color: white;
+  color: var(--text);
 }
 
 .search-form form {
@@ -61,9 +61,11 @@
   position: relative;
   padding: 10px 27px;
   border-radius: 100vmax;
+  font-family: 'Edu QLD Beginner', cursive;
   font-size: 1.1rem;
-  color: white;
-  background: hsl(43deg 100% 47%);
+  font-weight: 600;
+  color: var(--primary);
+  background: hsl(43deg 100% 80%);
   will-change: transform;
   transform: translateY(-4px);
   transition:
@@ -181,14 +183,14 @@ input::-webkit-inner-spin-button {
 }
 
 .genre-input input:checked + .genre-label {
-  background-color: rgb(77, 202, 211);
+  background-color: hsl(210, 100%, 80%)
   /* background-color: var(--accent); */
 }
 
 .genre-label {
   cursor: pointer;
-  background-color: white;
-  padding: .3rem .7rem .5rem;
+  background-color: hsl(47deg 100% 90%);
+  padding: .5rem .7rem .5rem;
   flex: 1 0 auto;
   border-radius: 100vmax;
   color: var(--primary);
