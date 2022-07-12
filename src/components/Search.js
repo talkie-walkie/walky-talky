@@ -32,6 +32,8 @@ const Search = ({ time, setTime, setGenreIds, setSearchTerm, setIsSearching }) =
 							name="hours"
 							type="number"
 							id="hours"
+              min="0"
+              max="3"
 							onChange={(e) => setTimeHours(e.target.value)}
 						></input>
 						<label htmlFor="hours">
@@ -43,6 +45,8 @@ const Search = ({ time, setTime, setGenreIds, setSearchTerm, setIsSearching }) =
 							name="minutes"
 							type="number"
 							id="minutes"
+              min="0"
+              max="59"
 							onChange={(e) => setTimeMinutes(e.target.value)}
 						></input>
 						<label htmlFor="minutes">

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-const PodcastTile = ({ podcastInfo, handleDragStart, handleDrop, handleDragEnter, isDraggable }) => {
+const PodcastTile = ({ podcastInfo, handleDragStart, handleDragEnter, isDraggable }) => {
   const [displayDescription, setDisplayDescription] = useState(false);
 
   // console.log(podcastInfo);

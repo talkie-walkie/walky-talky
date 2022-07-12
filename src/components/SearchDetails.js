@@ -38,6 +38,7 @@ const SearchDetails = ({ setGenres, setSearchInput }) => {
         type="text"
         name="searchInput"
         id="searchInput"
+        autoFocus
         required
       />
       <div className="genre-inputs">

@@ -39,13 +39,16 @@ function App() {
                   setSearchTerm={setSearchTerm}
                   setIsSearching={setIsSearching}
                 />
-                <SearchResults
+                { searchTerm
+                  ? <SearchResults
                   time={time}
                   genreIds={genreIds}
                   searchTerm={searchTerm}
                   isSearching={isSearching}
                   setIsSearching={setIsSearching}
                 />
+                : null
+                }
               </>
             }
           />

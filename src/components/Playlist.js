@@ -10,6 +10,7 @@ const Playlist = ({ subset, setSelectedSubset, isDraggable}) => {
   }
 
   const handleDragEnter = (event) => {
+    console.log('hi')
     const dragPodcast = subset.find((podcast) => podcast.id === dragId);
     const enterPodcast = subset.find((podcast) => podcast.id === event.currentTarget.id);
     const enterPodcastOrder = enterPodcast.order;

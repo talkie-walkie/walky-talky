@@ -633,14 +633,14 @@ const SearchResults = ({
   return (
     <section className="search-results-container">
       <h3>Search Results</h3>
-      <button onClick={handleShuffleClick} class="search-button-pushable">
+      <button onClick={handleShuffleClick} className="search-button-pushable">
         <span className="search-button-shadow"></span>
         <span className="search-button-edge"></span>
         <span className="search-button-front text">
           Shuffle
         </span>
       </button>
-      <Playlist subset={selectedSubset} />
+      <Playlist subset={selectedSubset} setSelectedSubset={setSelectedSubset} isDraggable={true} />
       <div>
         <label className="save-playlist-label" htmlFor="playlist-name">Name Your Playlist</label>
         <input

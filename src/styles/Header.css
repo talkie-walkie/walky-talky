@@ -82,13 +82,7 @@ header.shrink .header-subheader {
   z-index: 1;
 }
 
-.playlist-button i:hover + p,
-.playlist-button i:focus + p {
-  transform: translate(0);
-  opacity: 1;
-}
-
-.playlist-button p {
+.playlist-button-label {
   font-weight: 300;
   transform: translate(125%);
   opacity: 0;
@@ -96,7 +90,8 @@ header.shrink .header-subheader {
   transition: transform 0.3s ease-out, opacity 0.3s ease-out;
 }
 
-.playlist-button p.visible {
+.saved-playlist-link:hover .playlist-button-label,
+.saved-playlist-link:focus-within .playlist-button-label {
   transform: translate(0);
   opacity: 1;
 }
