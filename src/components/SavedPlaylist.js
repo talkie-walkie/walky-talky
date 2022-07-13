@@ -16,8 +16,13 @@ const SavedPlaylist = ({
         <h4>{playlist.name}</h4>
         <div className="playlist-displayed">
           <p>
-            {" "}
-            Length {playlist.hours}:{playlist.minutes}
+            {playlist.hours > 0
+              ? `${playlist.hours} ${playlist.hours > 1 ? "hrs" : "hr"} ${
+                  playlist.minutes
+                } ${playlist.minutes > 1 ? "mins" : "min"}`
+              : `${playlist.minutes} ${playlist.minutes > 1 ? "mins" : "min"} ${
+                  playlist.seconds
+                } ${playlist.seconds > 1 ? "secs" : "sec"}`}
           </p>
           <i
             className={`fa-solid fa-chevron-${
@@ -26,19 +31,6 @@ const SavedPlaylist = ({
           ></i>
         </div>
       </div>
-      {displayedPlaylist[index] ? (
-        <div className="playlist-container">
-          <Playlist subset={playlist.podcasts} />
-          <button
-            onClick={() => deletePlaylist(playlist.id)}
-            className="search-button-pushable"
-          >
-            <span className="search-button-shadow"></span>
-            <span className="search-button-edge"></span>
-            <span className="search-button-front text">Delete List</span>
-          </button>
-        </div>
-      ) : null}
       {displayedPlaylist[index] ? (
         <div className="playlist-container">
           <Playlist subset={playlist.podcasts} />

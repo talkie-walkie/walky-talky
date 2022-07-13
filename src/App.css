@@ -246,6 +246,11 @@ img {
   display: block;
 }
 
+i {
+  color: white;
+  transition: color .2s ease-out;
+}
+
 .container {
   min-height: 100vh;
   background-color: #00203f;

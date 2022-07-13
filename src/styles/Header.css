@@ -64,10 +64,6 @@ header.shrink .header-subheader {
 
 /* saved playlist menu */
 
-i {
-  color: var(--text);
-}
-
 .playlist-button {
   position: absolute;
   top: 40px;
