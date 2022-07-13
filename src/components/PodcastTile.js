@@ -7,9 +7,8 @@ const PodcastTile = ({
   handleDragStart,
   handleDragEnter,
   isDraggable,
+  setActivePodcast
 }) => {
-  console.log(getPubDate(new Date(podcastInfo.pub_date_ms)));
-  // const [displayDescription, setDisplayDescription] = useState(false);
   const [time, setTime] = useState({});
   const [expandDescription, setExpandDescription] = useState(false);
 
@@ -65,7 +64,7 @@ const PodcastTile = ({
           <p>{description}</p>
         </div>
         <div className="podcast-tile-play">
-          <i className="fa-solid fa-circle-play"></i>
+          <i className="fa-solid fa-circle-play" onClick={() => setActivePodcast(podcastInfo)}></i>
         </div>
         <div className="podcast-tile-data">
           <p>
@@ -83,31 +82,12 @@ const PodcastTile = ({
         </div>
         <div className="podcast-tile-links">
           <a className="podcast-tile-link" href={podcastInfo.link}>
-            <i class="fa-solid fa-link"></i>
+            <i className="fa-solid fa-link"></i>
           </a>
         </div>
       </div>
       <hr className="podcast-tile-divider" />
     </>
-    // <div id={podcastInfo.id} onDragStart={handleDragStart} onDragEnter={handleDragEnter} onDragOver={(e) => e.preventDefault()} className="podcast-tile" draggable={isDraggable} onClick={() => setDisplayDescription(!displayDescription)}>
-    //   <div className="podcast-img-and-details">
-    //     <div className="podcast-img">
-    //       <img
-    //         src={podcastInfo.thumbnail}
-    //         alt={`Cover art for ${podcastInfo.title_original}`}
-    //       />
-    //     </div>
-    //     <div className="podcast-details">
-    //       <h4>{podcastInfo.publisher_original}</h4>
-    //       <h5>{podcastInfo.title_original}</h5>
-    //     </div>
-    //   </div>
-    //   {displayDescription ? (
-    //     <div className="podcast-description">
-    //       <p>{description}</p>
-    //     </div>
-    //   ) : null}
-    // </div>
   );
 };
 

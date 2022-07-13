@@ -247,7 +247,7 @@ img {
 }
 
 i {
-  color: white;
+  color: var(--text);
   transition: color .2s ease-out;
 }
 
@@ -266,3 +266,17 @@ i {
   margin: 0 auto;
   flex-grow: 1;
 }
+
+
+
+
+
+
+
+
+
+
+/*==============
+PodcastPlayer.js
+===============*/
+
