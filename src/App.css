@@ -217,6 +217,7 @@ template {
 
 html {
   font-size: 125%;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -243,6 +244,11 @@ img {
   width: 100%;
   height: auto;
   display: block;
+}
+
+i {
+  color: white;
+  transition: color .2s ease-out;
 }
 
 .container {
