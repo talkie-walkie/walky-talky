@@ -1,7 +1,7 @@
 import PodcastTile from "./PodcastTile";
 import {useState} from 'react';
 
-const Playlist = ({ subset, setSelectedSubset, isDraggable}) => {
+const Playlist = ({ subset, setSelectedSubset, isDraggable, setActivePodcast}) => {
   
   const [dragId, setDragId] = useState('');
 
@@ -42,7 +42,7 @@ const Playlist = ({ subset, setSelectedSubset, isDraggable}) => {
   return (
     <section className="playlist">
       {subset.map((podcast) => (
-        <PodcastTile key={podcast.id} podcastInfo={podcast} handleDragStart={handleDragStart} handleDragEnter={handleDragEnter} isDraggable={isDraggable} />
+        <PodcastTile key={podcast.id} podcastInfo={podcast} handleDragStart={handleDragStart} handleDragEnter={handleDragEnter} isDraggable={isDraggable} setActivePodcast={setActivePodcast} />
       ))}
     </section>
   );

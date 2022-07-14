@@ -1,11 +1,10 @@
 import firebase from '../firebase';
 import { ref, getDatabase, onValue, remove } from 'firebase/database';
 import { useEffect, useState } from 'react';
-import '../styles/SavedPlaylists.css';
 import SavedPlaylist from './SavedPlaylist';
 
 
-const SavedPlaylists = () => {
+const SavedPlaylists = ({setActivePodcast}) => {
   const [displayedPlaylist, setDisplayedPlaylist] = useState([])
   const [playlists, setPlaylists] = useState([])
 
@@ -53,6 +52,7 @@ const SavedPlaylists = () => {
             deletePlaylist={deletePlaylist}
             setActivePlaylist={setActivePlaylist}
             displayedPlaylist={displayedPlaylist}
+            setActivePodcast={setActivePodcast}
             key={`playlist.playlistName-${index}`} />
         ))
       }

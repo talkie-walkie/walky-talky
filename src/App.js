@@ -1,34 +1,39 @@
-import './App.css';
-
-import './styles/Search.css';
-import './styles/PodcastTile.css';
-import './styles/Footer.css'
-import { useState } from 'react';
-import Search from './components/Search';
-
+import "./App.css";
+import "./styles/Header.css"
+import "./styles/Search.css";
+import "./styles/PodcastTile.css";
+import './styles/SavedPlaylists.css';
+import "./styles/Footer.css";
+import { useState } from "react";
+import Search from "./components/Search";
 
 import Header from "./components/Header";
 import SearchResults from "./components/SearchResults";
 import { Route, Routes } from "react-router-dom";
 import SavedPlaylists from "./components/SavedPlaylists";
-import Footer from './components/Footer';
+import PodcastPlayer from "./components/PodcastPlayer";
+import Footer from "./components/Footer";
 
 function App() {
   const [time, setTime] = useState(0);
-  const [genreIds, setGenreIds] = useState('');
-  const [searchTerm, setSearchTerm] = useState('');
+  const [genreIds, setGenreIds] = useState("");
+  const [searchTerm, setSearchTerm] = useState("");
   const [isSearching, setIsSearching] = useState(false);
+  const [activePodcast, setActivePodcast] = useState(null);
 
   return (
     <div className="container">
       <div className="wrapper">
         <Routes>
-          <Route path="SavedPlaylist" element={
-            <>
-              <Header home={false} />
-              <SavedPlaylists />
-            </>
-          } />
+          <Route
+            path="SavedPlaylist"
+            element={
+              <>
+                <Header home={false} />
+                <SavedPlaylists setActivePodcast={setActivePodcast} />
+              </>
+            }
+          />
           <Route
             path="/"
             element={
@@ -41,23 +46,24 @@ function App() {
                   setSearchTerm={setSearchTerm}
                   setIsSearching={setIsSearching}
                 />
-                { searchTerm
-                  ? <SearchResults
-                  time={time}
-                  genreIds={genreIds}
-                  searchTerm={searchTerm}
-                  isSearching={isSearching}
-                  setIsSearching={setIsSearching}
-                  setSearchTerm={setSearchTerm}
-                />
-                : null
-                }
+                {searchTerm ? (
+                  <SearchResults
+                    time={time}
+                    genreIds={genreIds}
+                    searchTerm={searchTerm}
+                    isSearching={isSearching}
+                    setIsSearching={setIsSearching}
+                    setSearchTerm={setSearchTerm}
+                    setActivePodcast={setActivePodcast}
+                  />
+                ) : null}
               </>
             }
           />
           <Route path="*" element={<p>ERROR</p>} />
         </Routes>
       </div>
+      {activePodcast ? <PodcastPlayer activePodcast={activePodcast} /> : null}
       <Footer />
     </div>
   );

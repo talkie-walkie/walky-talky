@@ -530,6 +530,7 @@ const SearchResults = ({
   isSearching,
   setIsSearching,
   setSearchTerm,
+  setActivePodcast,
 }) => {
   //states
   const [podcasts, setPodcasts] = useState([]);
@@ -653,6 +654,7 @@ const SearchResults = ({
         subset={selectedSubset}
         setSelectedSubset={setSelectedSubset}
         isDraggable={true}
+        setActivePodcast={setActivePodcast}
       />
       <div className="name-playlist-container">
         <label className="save-playlist-label" htmlFor="playlist-name">

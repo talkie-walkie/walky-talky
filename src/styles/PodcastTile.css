@@ -22,7 +22,11 @@
   padding: 8px;
   border-radius: 10px;
   transition: background-color .3s ease-out;
-  color: var(--text);
+  color: white;
+}
+
+.podcast-tile i {
+  color: white;
 }
 
 .podcast-tile:hover {
@@ -37,8 +41,9 @@
 
 .podcast-tile-img {
   grid-area: image;
+  display: flex;
+  margin: auto 16px auto 0;
   width: 64px;
-  margin-right: 16px;
   border-radius: 10px;
   overflow: hidden;
 }
@@ -139,8 +144,10 @@
   }
 
   .podcast-tile-img {
-    width: 134px;
+    min-width: 134px;
+    aspect-ratio: 1 / 1;
   }
+
   .podcast-tile-img img {
     height: 100%;
     width: 100%;
