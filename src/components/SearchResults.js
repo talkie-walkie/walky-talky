@@ -637,23 +637,26 @@ const SearchResults = ({
       message={`No results. Please try entering a different search term or including
     more genres`}
       handleClickOk={handleClickOk}
-      buttonText={`Ok`}
+      buttonText={`OK`}
     />
   ) : (
     <section className="search-results-container" ref={searchResultsSection}>
-      <h3>Search Results</h3>
-      <button onClick={handleShuffleClick} className="search-button-pushable">
-        <span className="search-button-shadow"></span>
-        <span className="search-button-edge"></span>
-        <span className="search-button-front text">Shuffle</span>
-      </button>
+      <div className="search-results-title-container">
+        <h3>For your listening pleasure</h3>
+        <button title="Refresh Results" onClick={handleShuffleClick} className="search-button-pushable">
+            <span className="search-button-shadow"></span>
+            <span className="search-button-edge"></span>
+            <span className="search-button-front text refresh-results" ><i className="fa-solid fa-rotate-right"></i></span>
+          </button>
+      </div>
+
       <Playlist
         subset={selectedSubset}
         setSelectedSubset={setSelectedSubset}
         isDraggable={true}
         setActivePodcast={setActivePodcast}
       />
-      <div>
+      <div className="name-playlist-container">
         <label className="save-playlist-label" htmlFor="playlist-name">
           Name Your Playlist
         </label>
@@ -666,15 +669,16 @@ const SearchResults = ({
             setPlaylistName(e.target.value);
           }}
         />
-        <button
-          onClick={() => savePlaylist(playlistName, selectedSubset)}
-          className="search-button-pushable"
-        >
-          <span className="search-button-shadow"></span>
-          <span className="search-button-edge"></span>
-          <span className="search-button-front text">Save Playlist</span>
-        </button>
       </div>
+
+          <button
+            onClick={() => savePlaylist(playlistName, selectedSubset)}
+            className="search-button-pushable"
+          >
+            <span className="search-button-shadow"></span>
+            <span className="search-button-edge"></span>
+            <span className="search-button-front text">Save Playlist</span>
+          </button>
     </section>
   );
 };

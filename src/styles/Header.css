@@ -12,6 +12,7 @@ header {
 
 header.shrink {
   min-height: 13vh;
+  
 }
 
 /* header title */
@@ -19,8 +20,11 @@ header.shrink {
 .header-title h1 {
   transform: rotate(-10deg);
 }
+.header-title-link {
+  color: var(--text);
+}
 
-header.shrink .header-title {
+header.shrink .header-title-link {
   animation: transition-to-left 1.5s forwards ease-out;
 }
 
@@ -36,12 +40,12 @@ header.shrink .header-subheader {
 @keyframes transition-to-left {
   0% {
     position: absolute;
-    /* top: 50%; */
-    left: 50%;
+    top: 65%;
+    left: 52%;
     transform: translate(-50%, -50%);
   }
   100% {
-    /* top: 20px; */
+    top: 0px;
     left: 20px;
     position: absolute;
   }
@@ -62,12 +66,22 @@ header.shrink .header-subheader {
   display: block;
 }
 
+/* HOME BUTTON  */
+
+.fa-house-chimney {
+  font-size: 2rem;
+  position: absolute;
+  top: 50px;
+  right: 0px;
+  padding: 10px 20px;
+}
+
 /* saved playlist menu */
 
 .playlist-button {
   position: absolute;
-  top: 40px;
-  right: 0px;
+  top: 65px;
+  right: -9px;
   display: flex;
   align-items: center;
   column-gap: 10px;
@@ -87,6 +101,7 @@ header.shrink .header-subheader {
   opacity: 0;
   overflow: hidden;
   transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+  color: white;
 }
 
 .saved-playlist-link:hover .playlist-button-label,
@@ -95,12 +110,13 @@ header.shrink .header-subheader {
   opacity: 1;
 }
 
-/* HOME BUTTON  */
 
-.fa-house-chimney {
-  font-size: 2rem;
-  position: absolute;
-  top: 20px;
-  right: 0px;
-  padding: 10px 20px;
+
+.logo {
+  height: 140px;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
 }

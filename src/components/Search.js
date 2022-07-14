@@ -9,7 +9,6 @@ const Search = ({ time, setTime, setGenreIds, setSearchTerm, setIsSearching }) =
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!time) {
-      console.log("hello");
       let hours = timeHours * 60 * 60;
       let minutes = timeMinutes * 60;
       setTime(hours + minutes);

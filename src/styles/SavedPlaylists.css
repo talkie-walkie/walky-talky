@@ -23,7 +23,7 @@
 .displayed-playlist-title {
   display: flex;
   flex-direction: column;
-  color: hsl(43deg 100% 90%);
+  color: var(--text);
   padding: 15px 25px;
   border-radius: 5px;
   cursor: pointer;

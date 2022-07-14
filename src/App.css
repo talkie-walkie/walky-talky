@@ -212,7 +212,7 @@ template {
 :root {
 --primary: hsl(210, 100%, 12%);
 --accent: hsl(43, 78%, 48%);
---text: hsl(43 100% 90%);
+--text: rgba(255, 255, 255, 0.931);
 }
 
 html {
