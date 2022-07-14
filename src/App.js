@@ -1,12 +1,6 @@
 import "./App.css";
-import "./styles/Header.css"
-import "./styles/Search.css";
-import "./styles/PodcastTile.css";
-import './styles/SavedPlaylists.css';
-import "./styles/Footer.css";
 import { useState } from "react";
 import Search from "./components/Search";
-
 import Header from "./components/Header";
 import SearchResults from "./components/SearchResults";
 import { Route, Routes } from "react-router-dom";

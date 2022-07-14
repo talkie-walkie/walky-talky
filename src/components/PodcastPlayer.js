@@ -79,6 +79,7 @@ const PodcastPlayer = ({ activePodcast }) => {
             }
             onClick={toggle}
           ></i>
+          
         </div>
         <div className="player-controls-scrubber"></div>
       </div>

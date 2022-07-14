@@ -1,6 +1,5 @@
 import { useWindowWidth } from '@react-hook/window-size';
 import { Link } from 'react-router-dom';
-import '../styles/Header.css';
 import Logo from '../assets/walkie-talkie.png';
 
 
