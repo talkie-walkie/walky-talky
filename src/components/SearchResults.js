@@ -77,6 +77,8 @@ const SearchResults = ({
       }).then((response) => {
         setPodcasts([...podcasts, ...response.data.results]);
         getSubsets([...podcasts, ...response.data.results], time);
+      }).catch((error) => {
+        console.error(error);
       });
     } else {
       getRandomSubset();
