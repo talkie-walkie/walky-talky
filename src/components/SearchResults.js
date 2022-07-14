@@ -95,19 +95,13 @@ const SearchResults = ({
           genre_ids: genreIds,
         },
       }).then((response) => {
-        if (response.ok) {
           setPodcasts(response.data.results);
           getSubsets(response.data.results, time);
           setIsSearching(false);
-        } else {
-          throw new Error('There was an error fetching results from the API.')
-        }
       }).catch((error) => {
         console.error(error);
       });
     }
-    // setPodcasts(data);
-    // getSubsets(data, time);
   }, [time, genreIds, searchTerm, getSubsets, isSearching, setIsSearching]);
 
   useEffect(() => {
