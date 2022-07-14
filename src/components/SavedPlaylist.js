@@ -6,6 +6,7 @@ const SavedPlaylist = ({
   setActivePlaylist,
   displayedPlaylist,
   deletePlaylist,
+  setActivePodcast,
 }) => {
   return (
     <div className="displayed-playlist">
@@ -33,7 +34,7 @@ const SavedPlaylist = ({
       </div>
       {displayedPlaylist[index] ? (
         <div className="playlist-container">
-          <Playlist subset={playlist.podcasts} />
+          <Playlist subset={playlist.podcasts} setActivePodcast={setActivePodcast} />
           <button
             onClick={() => deletePlaylist(playlist.id)}
             className="search-button-pushable"
