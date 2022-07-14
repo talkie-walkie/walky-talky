@@ -21,7 +21,6 @@ const Header = (props) => {
           <h2 className="header-subheader">A Podcast Planner</h2>
         </div>
       </Link>
-      {/* this is from font-awesome */}
       {props.home ? <Link to="SavedPlaylist" className="saved-playlist-link">
         <div className="playlist-button" aria-labelledby="playlist-button-label">
           <i className="fa-solid fa-list"></i>

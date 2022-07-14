@@ -22,7 +22,7 @@ const SavedPlaylists = ({setActivePodcast}) => {
         setPlaylists(playlistsArray)
         setDisplayedPlaylist(new Array(playlistsArray.length).fill(false))
       } else {
-        console.log('No Data Available');
+        console.error('No Data Available');
       }
     });
   }, []);

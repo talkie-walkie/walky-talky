@@ -57,7 +57,7 @@ function App() {
           <Route path="*" element={<p>ERROR</p>} />
         </Routes>
       </div>
-      {activePodcast ? <PodcastPlayer activePodcast={activePodcast} /> : null}
+      {activePodcast ? <PodcastPlayer activePodcast={activePodcast} setActivePodcast={setActivePodcast} /> : null}
       <Footer />
     </div>
   );

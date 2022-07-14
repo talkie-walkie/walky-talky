@@ -37,11 +37,11 @@ const SavedPlaylist = ({
           <Playlist subset={playlist.podcasts} setActivePodcast={setActivePodcast} />
           <button
             onClick={() => deletePlaylist(playlist.id)}
-            className="search-button-pushable"
+            className="button-pushable"
           >
-            <span className="search-button-shadow"></span>
-            <span className="search-button-edge"></span>
-            <span className="search-button-front text">Delete List</span>
+            <span className="button-shadow"></span>
+            <span className="button-edge"></span>
+            <span className="button-front text">Delete List</span>
           </button>
         </div>
       ) : null}

@@ -10,7 +10,6 @@ const Playlist = ({ subset, setSelectedSubset, isDraggable, setActivePodcast}) =
   }
 
   const handleDragEnter = (event) => {
-    console.log('hi')
     const dragPodcast = subset.find((podcast) => podcast.id === dragId);
     const enterPodcast = subset.find((podcast) => podcast.id === event.currentTarget.id);
     const enterPodcastOrder = enterPodcast.order;
@@ -24,20 +23,6 @@ const Playlist = ({ subset, setSelectedSubset, isDraggable, setActivePodcast}) =
     setSelectedSubset(newSubset);
     event.preventDefault();
   }
-
-  // const handleDrop = (event) => {
-  //   const dragPodcast = subset.find((podcast) => podcast.id === dragId);
-  //   const dropPodcast = subset.find((podcast) => podcast.id === event.currentTarget.id);
-  //   const dropPodcastOrder = dropPodcast.order;
-
-  //   let newSubset = subset.filter((podcast) => podcast !== dragPodcast);
-  //   newSubset.splice(dropPodcastOrder, 0, dragPodcast);
-  //   newSubset = newSubset.map((podcast, index) => {
-  //     return {...podcast, order: index};
-  //   })
-
-  //   setSelectedSubset(newSubset);
-  // };
 
   return (
     <section className="playlist">

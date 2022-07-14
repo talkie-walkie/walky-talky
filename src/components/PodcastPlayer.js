@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-const PodcastPlayer = ({ activePodcast }) => {
+const PodcastPlayer = ({ activePodcast, setActivePodcast }) => {
   const [audio, setAudio] = useState(new Audio());
   const [playing, setPlaying] = useState(false);
   const [audioVolume, setAudioVolume] = useState(0.5);
@@ -23,6 +23,10 @@ const PodcastPlayer = ({ activePodcast }) => {
     }
   };
 
+  const closePlayer = () => {
+    setActivePodcast(null);
+  };
+
   useEffect(() => {
     playing ? audio.play() : audio.pause();
   }, [audio, playing]);
@@ -34,7 +38,7 @@ const PodcastPlayer = ({ activePodcast }) => {
         setPlaying(true);
         audio.removeEventListener("loadeddata", shouldIStartPlaying);
       }
-    }
+    };
     audio.addEventListener("ended", () => setPlaying(false));
     audio.addEventListener("loadeddata", shouldIStartPlaying);
     return () => {
@@ -47,15 +51,6 @@ const PodcastPlayer = ({ activePodcast }) => {
   useEffect(() => {
     setAudio(new Audio(activePodcast.audio));
   }, [activePodcast.audio]);
-
-  // useEffect(() => {
-  //   const isItReady = setInterval(() => {
-  //     if (audio.readyState === 4) {
-  //       setPlaying(true);
-  //       clearInterval(isItReady);
-  //     }
-  //   }, 1000);
-  // }, [audio, audio.readyState]);
 
   return (
     <section className="player">
@@ -79,7 +74,6 @@ const PodcastPlayer = ({ activePodcast }) => {
             }
             onClick={toggle}
           ></i>
-          
         </div>
         <div className="player-controls-scrubber"></div>
       </div>
@@ -101,6 +95,13 @@ const PodcastPlayer = ({ activePodcast }) => {
             onChange={handleChangeVolume}
           />
         </div>
+      </div>
+      <div className="close-player" title="Close Player">
+        <button onClick={closePlayer} className="button-pushable">
+          <span className="button-shadow"></span>
+          <span className="button-edge"></span>
+          <span className="button-front text"><i className="fa-solid fa-xmark"></i></span>
+        </button>
       </div>
     </section>
   );

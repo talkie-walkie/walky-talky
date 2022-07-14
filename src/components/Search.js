@@ -56,10 +56,10 @@ const Search = ({ time, setTime, setGenreIds, setSearchTerm, setIsSearching }) =
         {time ? (
           <SearchDetails setGenres={setGenres} setSearchInput={setSearchInput} />
         ) : null}
-        <button className="search-button-pushable">
-          <span className="search-button-shadow"></span>
-          <span className="search-button-edge"></span>
-          <span className="search-button-front text">
+        <button className="button-pushable">
+          <span className="button-shadow"></span>
+          <span className="button-edge"></span>
+          <span className="button-front text">
             Submit
           </span>
         </button>
