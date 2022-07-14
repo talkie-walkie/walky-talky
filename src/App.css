@@ -116,22 +116,22 @@ select {
   text-transform: none;
 }
 button,
-html [type="button"],
-[type="reset"],
-[type="submit"] {
+html [type='button'],
+[type='reset'],
+[type='submit'] {
   -webkit-appearance: button;
 }
 button::-moz-focus-inner,
-[type="button"]::-moz-focus-inner,
-[type="reset"]::-moz-focus-inner,
-[type="submit"]::-moz-focus-inner {
+[type='button']::-moz-focus-inner,
+[type='reset']::-moz-focus-inner,
+[type='submit']::-moz-focus-inner {
   border-style: none;
   padding: 0;
 }
 button:-moz-focusring,
-[type="button"]:-moz-focusring,
-[type="reset"]:-moz-focusring,
-[type="submit"]:-moz-focusring {
+[type='button']:-moz-focusring,
+[type='reset']:-moz-focusring,
+[type='submit']:-moz-focusring {
   outline: 1px dotted ButtonText;
 }
 fieldset {
@@ -152,21 +152,21 @@ progress {
 textarea {
   overflow: auto;
 }
-[type="checkbox"],
-[type="radio"] {
+[type='checkbox'],
+[type='radio'] {
   box-sizing: border-box;
   padding: 0;
 }
-[type="number"]::-webkit-inner-spin-button,
-[type="number"]::-webkit-outer-spin-button {
+[type='number']::-webkit-inner-spin-button,
+[type='number']::-webkit-outer-spin-button {
   height: auto;
 }
-[type="search"] {
+[type='search'] {
   -webkit-appearance: textfield;
   outline-offset: -2px;
 }
-[type="search"]::-webkit-search-cancel-button,
-[type="search"]::-webkit-search-decoration {
+[type='search']::-webkit-search-cancel-button,
+[type='search']::-webkit-search-decoration {
   -webkit-appearance: none;
 }
 ::-webkit-file-upload-button {
@@ -222,7 +222,7 @@ html {
 }
 
 body {
-  font-family: "Rubik", sans-serif;
+  font-family: 'Rubik', sans-serif;
 }
 
 h1,
@@ -238,7 +238,7 @@ p {
 
 h1,
 h2 {
-  font-family: "Edu QLD Beginner", cursive;
+  font-family: 'Edu QLD Beginner', cursive;
   letter-spacing: 1px;
 }
 
@@ -455,7 +455,7 @@ header.shrink .header-subheader {
   position: relative;
   padding: 10px 27px;
   border-radius: 100vmax;
-  font-family: "Edu QLD Beginner", cursive;
+  font-family: 'Edu QLD Beginner', cursive;
   font-size: 1.1rem;
   font-weight: 600;
   color: var(--primary);
@@ -534,7 +534,7 @@ input::-webkit-inner-spin-button {
 }
 
 /* Remove number input up and down buttons on Firefox */
-.number-input input[type="number"] {
+.number-input input[type='number'] {
   -moz-appearance: textfield;
 }
 
@@ -673,6 +673,10 @@ search.js
   justify-content: space-between;
 }
 
+.hidden {
+  display: none;
+}
+
 /*==============
 podcastTiles.js
 ===============*/
@@ -701,9 +705,9 @@ podcastTiles.js
   grid-template-columns: min-content min-content 1fr min-content;
   grid-template-rows: min-content min-content min-content;
   grid-template-areas:
-    "image image heading heading"
-    "description description description description "
-    "play data data links";
+    'image image heading heading'
+    'description description description description '
+    'play data data links';
   row-gap: 10px;
   padding: 8px;
   border-radius: 10px;
@@ -890,7 +894,7 @@ footer a {
 }
 
 .our-names:after {
-  content: "";
+  content: '';
   position: absolute;
   width: 100%;
   transform: scaleX(0);
@@ -955,7 +959,7 @@ PodcastPlayer.js
 
 .player-controls-buttons i:hover,
 .player-controls-buttons i:focus {
-  color: hsl(210, 100%, 32%)
+  color: hsl(210, 100%, 32%);
 }
 
 .player-volume {
@@ -973,17 +977,15 @@ PodcastPlayer.js
 }
 
 .close-player .button-front i {
-  color: var(--primary)
+  color: var(--primary);
 }
-
-
 
 @media (min-width: 481px) {
   .podcast-tile {
     grid-template-areas:
-      "image heading heading heading"
-      "image description description description"
-      "image play data links";
+      'image heading heading heading'
+      'image description description description'
+      'image play data links';
   }
 
   .podcast-tile-img {
@@ -1017,7 +1019,7 @@ PodcastPlayer.js
     position: relative;
   }
   .player-controls::before {
-    content: "";
+    content: '';
     position: absolute;
     top: 15px;
     left: -29px;
@@ -1028,7 +1030,7 @@ PodcastPlayer.js
     box-shadow: 10px 10px var(--cream);
   }
   .player-controls::after {
-    content: "";
+    content: '';
     position: absolute;
     top: 15px;
     right: -29px;
@@ -1072,7 +1074,7 @@ PodcastPlayer.js
     bottom: 50px;
     left: -20px;
   }
-  
+
   .close-player .button-front {
     padding: 7px 15px 7px 35px;
   }
